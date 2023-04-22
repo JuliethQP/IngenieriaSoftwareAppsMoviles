@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="32dp"
-    tools:context=".VisitorFragment">
+    tools:context=".ui.home_collector.HomeCollectorFragment">
 
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="32dp"
-        android:layout_height="64dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="#fff"
-        android:src="@drawable/back"
+        android:src="@drawable/previous_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,12 +49,10 @@
             android:src="@drawable/vinil_style_2" />
     </LinearLayout>
 
-
     <RelativeLayout
         android:id="@+id/button_section"
         android:layout_width="fill_parent"
-        android:layout_height="256dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="128dp"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,60 +61,27 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/albums_button"
-            android:layout_width="257dp"
+            android:id="@+id/album_button"
+            android:layout_width="256dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="77dp"
-            android:layout_marginLeft="77dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="77dp"
-            android:layout_marginRight="77dp"
-            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="77.5dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="77.5dp"
+            android:layout_marginRight="107dp"
+            android:layout_marginBottom="40dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/text_vis_albums"
+            android:text="@string/text_my_albums"
             app:cornerRadius="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/artists_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
-            android:layout_below="@+id/albums_button"
-            android:layout_marginStart="77dp"
-            android:layout_marginLeft="77dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="77dp"
-            android:layout_marginRight="77dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/text_vis_artists"
-            app:cornerRadius="32dp">
-        </Button>
-
-        <Button
-            android:id="@+id/collectors_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
-            android:layout_below="@+id/artists_button"
-            android:layout_marginStart="77dp"
-            android:layout_marginLeft="77dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="77dp"
-            android:layout_marginRight="77dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/text_vis_collectors"
-            app:cornerRadius="32dp">
-        </Button>
-
-
     </RelativeLayout>
 
 

@@ -1,4 +1,4 @@
-package com.example.moviles_g13
+package com.example.moviles_g13.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.example.moviles_g13.R
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.

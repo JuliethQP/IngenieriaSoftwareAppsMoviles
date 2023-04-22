@@ -16,7 +16,6 @@
     <!-- texts for buttons of collector home -->
     <string name="text_my_albums">Mis Álbumes</string>
 
-
     <!-- texts for buttons of visitor home -->
     <string name="text_vis_albums">Álbumes</string>
     <string name="text_vis_artists">Artistas</string>
@@ -27,4 +26,9 @@
     <string name="home_fragment_label">Home</string>
     <string name="visitor_fragment_label">Visitor</string>
     <string name="collector_fragment_label">Collector</string>
+    <string name="title_home">Home</string>
+
+    <string name="menu_album">Albums</string>
+    <string name="menu_artists">Artists</string>
+    <string name="menu_collections">Collecionistas</string>
 </resources>

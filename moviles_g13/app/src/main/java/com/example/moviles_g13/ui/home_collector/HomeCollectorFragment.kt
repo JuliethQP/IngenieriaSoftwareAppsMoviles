@@ -1,4 +1,4 @@
-package com.example.moviles_g13
+package com.example.moviles_g13.ui.home_collector
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,18 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
+import com.example.moviles_g13.R
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class CollectorFragment : Fragment() {
+class HomeCollectorFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.collector_fragment, container, false)
+        return inflater.inflate(R.layout.collector_home_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
