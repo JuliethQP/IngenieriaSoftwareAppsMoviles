@@ -21,12 +21,11 @@
             app:destination="@id/HomeCollectorFragment" />
     </fragment>
 
-
-    <!-- Navigation for visitor -->
+    <!-- Navigation for Visitor -->
     <fragment
         android:id="@+id/HomeVisitorFragment"
         android:name="com.example.moviles_g13.ui.home_visitor.HomeVisitorFragment"
-        android:label="@string/visitor_fragment_label"
+        android:label="@string/home_fragment_label"
         tools:layout="@layout/visitor_home_fragment">
 
         <action
@@ -34,49 +33,21 @@
             app:destination="@id/HomeFragment" />
 
         <action
-            android:id="@+id/action_albums_visitor_layout"
-            app:destination="@id/AlbumsVisitorFragment">
-        </action>
-
-        <action
-            android:id="@+id/action_artist_to_home_layout"
-            app:destination="@id/ArtistsVisitorFragment" />
-
-        <action
-            android:id="@+id/action_collectors_visitor_layout"
-            app:destination="@id/CollectorsVisitorFragment">
-        </action>
+            android:id="@+id/action_visitor_to_albums_layout"
+            app:destination="@id/AlbumsVisitorFragment" />
     </fragment>
 
-    <!-- NAV ALBUMS VISITOR -->
+    <!-- Navigation for Albums of visitors -->
     <fragment
         android:id="@+id/AlbumsVisitorFragment"
         android:name="com.example.moviles_g13.ui.albums_visitor.AlbumsVisitorFragment"
-        android:label="@string/home_fragment_label"
+        android:label="@string/album_fragment_label"
         tools:layout="@layout/albums_visitor_fragment">
 
         <action
-            android:id="@+id/action_back_to_home_visitor_layout"
-            app:destination="@id/HomeVisitorFragment">
-        </action>
+            android:id="@+id/action_back_to_home_visitor"
+            app:destination="@id/HomeVisitorFragment" />
     </fragment>
-
-    <!-- -->
-    <fragment
-        android:id="@+id/ArtistsVisitorFragment"
-        android:name="com.example.moviles_g13.ui.albums_visitor.AlbumsVisitorFragment"
-        android:label="@string/home_fragment_label"
-        tools:layout="@layout/albums_visitor_fragment"> <!-- Change when exist visit artist -->
-    </fragment>
-
-    <!-- -->
-    <fragment
-        android:id="@+id/CollectorsVisitorFragment"
-        android:name="com.example.moviles_g13.ui.albums_visitor.AlbumsVisitorFragment"
-        android:label="@string/home_fragment_label"
-        tools:layout="@layout/albums_visitor_fragment"> <!-- Change when exist visit artist -->
-    </fragment>
-    <!-- End navigation for visitors -->
 
     <!-- Navigation for collector -->
     <fragment

@@ -27,14 +27,12 @@ class HomeVisitorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
-            findNavController().navigate(R.id.action_visitor_to_home_layout)
+            findNavController().navigate(R.id.action_visitor_to_albums_layout)
         }
 
         view.findViewById<Button>(R.id.albums_button).setOnClickListener {
-            findNavController().navigate(R.id.action_albums_visitor_layout)
+            findNavController().navigate(R.id.action_visitor_to_albums_layout)
         }
-
-
     }
 
 }

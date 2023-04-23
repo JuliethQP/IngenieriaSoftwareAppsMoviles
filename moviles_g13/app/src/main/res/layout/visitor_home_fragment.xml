@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614">
+        app:layout_constraintVertical_bias="0.689">
 
         <TextView
             android:id="@+id/company_text"
@@ -49,11 +49,10 @@
             android:src="@drawable/vinil_style_2" />
     </LinearLayout>
 
-
     <RelativeLayout
         android:id="@+id/button_section"
         android:layout_width="fill_parent"
-        android:layout_height="256dp"
+        android:layout_height="180dp"
         android:layout_marginBottom="4dp"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
@@ -66,17 +65,11 @@
             android:id="@+id/albums_button"
             android:layout_width="257dp"
             android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="77dp"
             android:layout_marginRight="77dp"
-            android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/text_vis_albums"
             app:cornerRadius="32dp"
@@ -91,14 +84,12 @@
             android:layout_below="@+id/albums_button"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="77dp"
             android:layout_marginRight="77dp"
-            android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/text_vis_artists"
-            app:cornerRadius="32dp">
-        </Button>
+            app:cornerRadius="32dp"></Button>
 
         <Button
             android:id="@+id/collectors_button"
@@ -107,10 +98,9 @@
             android:layout_below="@+id/artists_button"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="77dp"
             android:layout_marginRight="77dp"
-            android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/text_vis_collectors"
             app:cornerRadius="32dp">
@@ -118,6 +108,5 @@
 
 
     </RelativeLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,4 +31,5 @@
     <string name="menu_album">Albums</string>
     <string name="menu_artists">Artists</string>
     <string name="menu_collections">Collecionistas</string>
+    <string name="album_fragment_label">Albums</string>
 </resources>
