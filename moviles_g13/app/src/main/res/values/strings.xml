@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">moviles_g13</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="company_name">Vinilos</string>
+
+    <string name="text_visitor">Visitante</string>
+    <string name="text_collector">Coleccionista</string>
+
+    <!-- texts for buttons of collector home -->
+    <string name="text_my_albums">Mis Álbumes</string>
+
+    <!-- texts for buttons of visitor home -->
+    <string name="text_vis_albums">Álbumes</string>
+    <string name="text_vis_artists">Artistas</string>
+    <string name="text_vis_collectors">Coleccionistas</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="home_fragment_label">Home</string>
+    <string name="visitor_fragment_label">Visitor</string>
+    <string name="collector_fragment_label">Collector</string>
+    <string name="title_home">Home</string>
+
+    <string name="menu_album">Albums</string>
+    <string name="menu_artists">Artists</string>
+    <string name="menu_collections">Collecionistas</string>
+    <string name="album_fragment_label">Albums</string>
+</resources>
