@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.databinding.ArtistVisitorItemBinding
 import com.example.moviles_g13.model.Artist
@@ -31,8 +32,7 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
             it.artist = artists[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = ArtistsVisitorFragmentDirections.actio(artists[position].artistId)
-
+            val action = ArtistsVisitorFragmentDirections.actionArtistsVisitorFragmentToHomeVisitorFragment()
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
