@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_visitor_to_albums_layout"
             app:destination="@id/AlbumsVisitorFragment" />
+        <action
+            android:id="@+id/action_HomeVisitorFragment_to_artistsVisitorFragment"
+            app:destination="@id/artistsVisitorFragment" />
     </fragment>
 
     <!-- Navigation for Albums of visitors -->
@@ -59,6 +62,15 @@
         <action
             android:id="@+id/action_collector_to_home_layout"
             app:destination="@id/HomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistsVisitorFragment"
+        android:name="com.example.moviles_g13.ui.artists_visitor.ArtistsVisitorFragment"
+        android:label="artists_visitor_fragment"
+        tools:layout="@layout/artists_visitor_fragment" >
+        <action
+            android:id="@+id/action_artistsVisitorFragment_to_HomeVisitorFragment"
+            app:destination="@id/HomeVisitorFragment" />
     </fragment>
 
 </navigation>
