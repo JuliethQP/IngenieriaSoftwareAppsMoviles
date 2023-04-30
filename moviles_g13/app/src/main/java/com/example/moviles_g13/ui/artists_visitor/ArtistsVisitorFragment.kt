@@ -39,15 +39,13 @@ class ArtistsVisitorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
-
-        view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
-            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
-        }
         recyclerView = binding.artistsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+        view.findViewById<ImageButton>(R.id.back_button_artist).setOnClickListener {
+            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -77,9 +75,4 @@ class ArtistsVisitorFragment : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
-
-
-
-
-
 }
