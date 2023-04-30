@@ -8,13 +8,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviles_g13.model.Artist
 import com.example.moviles_g13.network.NetworkServiceAdapter
+import com.example.moviles_g13.repositories.ArtistRepository
 
 class ArtistVisitorViewModel (application: Application) :  AndroidViewModel(application) {
 
-    private val _albums = MutableLiveData<List<Artist>>()
+    private val _artist = MutableLiveData<List<Artist>>()
+    private val artistRepository = ArtistRepository(application)
 
     val albums: LiveData<List<Artist>>
-        get() = _albums
+        get() = _artist
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -31,8 +33,8 @@ class ArtistVisitorViewModel (application: Application) :  AndroidViewModel(appl
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getArtists({
-            _albums.postValue(it)
+        artistRepository.refreshData({
+            _artist.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -43,9 +45,8 @@ class ArtistVisitorViewModel (application: Application) :  AndroidViewModel(appl
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
-
     class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ArtistVisitorViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return ArtistVisitorViewModel(app) as T
