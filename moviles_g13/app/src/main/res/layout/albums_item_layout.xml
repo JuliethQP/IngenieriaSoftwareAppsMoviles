@@ -1,65 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false">
 
-    <ImageView
-        android:id="@+id/album_logo"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textAlignment="gravity"
-        android:src="@drawable/vinil_style_2"/>
+    <data>
+        <variable
+            name="album"
+            type="com.example.moviles_g13.model.Album" />
+    </data>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:paddingTop="20dp"
-        android:paddingLeft="5dp"
-        android:paddingBottom="20dp">
-        <TextView
-            android:id="@+id/album_name"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/album_released"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/album_recordLabel"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/album_logo"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:src="@drawable/vinil_style_2"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:paddingTop="20dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="20dp">
+            <TextView
+                android:id="@+id/album_name"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@{album.name}"/>
+            <TextView
+                android:id="@+id/album_released"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@{album.genre}"/>
+            <TextView
+                android:id="@+id/album_recordLabel"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@{album.recordLabel}"/>
+        </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/like_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#fff"
+            android:src="@drawable/heart" />
+
+        <ImageButton
+            android:id="@+id/add_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#fff"
+            android:src="@drawable/add" />
     </LinearLayout>
 
-
-    <ImageButton
-        android:id="@+id/like_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#fff"
-        android:src="@drawable/heart" />
-
-    <ImageButton
-        android:id="@+id/add_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#fff"
-        android:src="@drawable/add" />
-</LinearLayout>
+</layout>

@@ -1,27 +1,56 @@
 package com.example.moviles_g13.ui.albums_visitor
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.moviles_g13.model.Album
+import com.example.moviles_g13.repositories.AlbumRepository
 
-class AlbumsVisitorViewModel : ViewModel() {
+class AlbumsVisitorViewModel  (application: Application) : AndroidViewModel(application) {
 
-    private val _albums = MutableLiveData<List<Album>>().apply {
-        val dataList: List<Album> = listOf<Album>(
-                Album(albumId=1, name="Camisa negra", cover="https://ibb.co/GTtGX4m", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://2.bp.blogspot.com/-tzm1twY_ENM/XlCRuI0ZkRI/AAAAAAAAOso/BmNOUANXWxwc5vwslNw3WpjrDlgs9PuwQCLcBGAsYHQ/s1600/pasted%2Bimage%2B0.png", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://en.wikipedia.org/wiki/La_Camisa_Negra#/media/File:La_Camisa_Negra.jpg", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://ibb.co/GTtGX4m", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://2.bp.blogspot.com/-tzm1twY_ENM/XlCRuI0ZkRI/AAAAAAAAOso/BmNOUANXWxwc5vwslNw3WpjrDlgs9PuwQCLcBGAsYHQ/s1600/pasted%2Bimage%2B0.png", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://en.wikipedia.org/wiki/La_Camisa_Negra#/media/File:La_Camisa_Negra.jpg", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://ibb.co/GTtGX4m", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://2.bp.blogspot.com/-tzm1twY_ENM/XlCRuI0ZkRI/AAAAAAAAOso/BmNOUANXWxwc5vwslNw3WpjrDlgs9PuwQCLcBGAsYHQ/s1600/pasted%2Bimage%2B0.png", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony"),
-                Album(albumId=1, name="Camisa negra", cover="https://en.wikipedia.org/wiki/La_Camisa_Negra#/media/File:La_Camisa_Negra.jpg", releaseDate="2021", description="Tengo la camisa negra de juanes", genre="POP", recordLabel="Sony")
-        )
-        value = dataList
+    private val _albums = MutableLiveData<List<Album>>()
+    private val albumRepository = AlbumRepository(application)
+
+    val artists: LiveData<List<Album>>
+        get() = _albums
+
+    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+
+    val eventNetworkError: LiveData<Boolean>
+        get() = _eventNetworkError
+
+    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+
+    val isNetworkErrorShown: LiveData<Boolean>
+        get() = _isNetworkErrorShown
+
+    init {
+        refreshDataFromNetwork()
     }
 
-    val albums: LiveData<List<Album>> = _albums
+    private fun refreshDataFromNetwork() {
+        albumRepository.refreshData({
+            _albums.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
+    }
 
+    fun onNetworkErrorShown() {
+        _isNetworkErrorShown.value = true
+    }
+    class Factory(val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AlbumsVisitorViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return AlbumsVisitorViewModel(app) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
+        }
+    }
 }
