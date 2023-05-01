@@ -21,12 +21,10 @@ import com.example.moviles_g13.ui.adapters.ArtistsAdapter
 class ArtistsVisitorFragment : Fragment() {
     private var _binding: ArtistsVisitorFragmentBinding ? = null
 
-
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel:ArtistVisitorViewModel
     private var viewModelAdapter: ArtistsAdapter? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +45,6 @@ class ArtistsVisitorFragment : Fragment() {
             findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
         }
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {

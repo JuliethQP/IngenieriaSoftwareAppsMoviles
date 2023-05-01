@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdkVersion 33
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.example.moviles_g13"
@@ -36,6 +35,7 @@ android {
         viewBinding true
         dataBinding true
     }
+    namespace 'com.example.moviles_g13'
 }
 
 dependencies {
