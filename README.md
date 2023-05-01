@@ -11,7 +11,7 @@ cd IngenieriaSoftwareAppsMoviles/moviles_g13
 ```
  * Hacer el build
  * Elegir un dispositivo para correr la aplicacion
- * El APK está en la carpeta apk
+ * El APK está en la carpeta apk [APK](https://github.com/JuliethQP/IngenieriaSoftwareAppsMoviles/tree/main/APK)
  # Requisitos
  
 ## Tener instalado android studio para abrir el proyecto
