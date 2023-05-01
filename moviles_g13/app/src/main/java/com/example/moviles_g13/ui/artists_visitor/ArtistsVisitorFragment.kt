@@ -55,7 +55,7 @@ class ArtistsVisitorFragment : Fragment() {
         }
         activity.actionBar?.title = getString(R.string.title_home)
         viewModel = ViewModelProvider(this,ArtistVisitorViewModel.Factory(activity.application)).get(ArtistVisitorViewModel::class.java)
-        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Artist>> {
+        viewModel.artists.observe(viewLifecycleOwner, Observer<List<Artist>> {
             it.apply {
                 viewModelAdapter!!.artists = this
             }
