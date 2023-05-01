@@ -41,6 +41,7 @@
                 android:id="@+id/artist_name"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@{artist.name}" />
 
 
@@ -48,6 +49,7 @@
                 android:id="@+id/album_recordLabel"
                 android:layout_width="235dp"
                 android:layout_height="150dp"
+                android:textColor="@color/black"
                 android:text="@{artist.description}" />
         </LinearLayout>
 

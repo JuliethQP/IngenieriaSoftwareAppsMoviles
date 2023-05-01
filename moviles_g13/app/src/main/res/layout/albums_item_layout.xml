@@ -39,16 +39,19 @@
                 android:id="@+id/album_name"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@{album.name}"/>
             <TextView
                 android:id="@+id/album_released"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@{album.genre}"/>
             <TextView
                 android:id="@+id/album_recordLabel"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@{album.recordLabel}"/>
         </LinearLayout>
 

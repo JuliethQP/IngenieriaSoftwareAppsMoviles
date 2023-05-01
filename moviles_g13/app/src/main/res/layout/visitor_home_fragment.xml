@@ -37,6 +37,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
             android:text="@string/company_name"
+            android:textColor="@color/black"
             android:textAlignment="gravity"
             app:autoSizeTextType="uniform" />
 
