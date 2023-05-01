@@ -41,12 +41,7 @@ class ArtistsVisitorFragment : Fragment() {
         recyclerView = binding.artistsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
-        view.findViewById<ImageButton>(R.id.back_button_artist).setOnClickListener {
-            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
-        }
-    }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
@@ -60,7 +55,12 @@ class ArtistsVisitorFragment : Fragment() {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+
+        view.findViewById<ImageButton>(R.id.back_button_artist).setOnClickListener {
+            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
+        }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
