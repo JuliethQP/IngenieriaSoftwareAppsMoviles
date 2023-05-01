@@ -18,7 +18,7 @@ class AlbumsAdapter (private val mAlbums: List<Album>) : RecyclerView.Adapter<Al
         val albumNameTextView: TextView = itemView.findViewById<TextView>(R.id.album_name)
         val releasedTextView: TextView = itemView.findViewById<TextView>(R.id.album_released)
         val recordLabelTextView: TextView = itemView.findViewById<TextView>(R.id.album_recordLabel)
-        //val coverImageView: ImageView = itemView.findViewById<ImageView>(R.id.album_logo)
+        val coverImageView: ImageView = itemView.findViewById<ImageView>(R.id.album_logo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsAdapter.ViewHolder {
@@ -41,6 +41,13 @@ class AlbumsAdapter (private val mAlbums: List<Album>) : RecyclerView.Adapter<Al
 
         val textViewRecordLabel = viewHolder.recordLabelTextView
         textViewRecordLabel.text = album.recordLabel
+
+        val imageViewLogo = viewHolder.coverImageView
+        val location: Uri = Uri.parse(album.cover)
+
+        Glide.with(imageViewLogo)
+                .load(location)
+                .into(imageViewLogo);
     }
     
     override fun getItemCount(): Int {

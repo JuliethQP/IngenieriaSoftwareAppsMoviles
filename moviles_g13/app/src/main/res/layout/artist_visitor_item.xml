@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false">
 
     <data>
 
@@ -11,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500px"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
         android:paddingTop="8dp"
@@ -19,16 +20,16 @@
         android:paddingBottom="8dp">
 
         <ImageView
-            android:id="@+id/album_logo"
+            android:id="@+id/artist_logo"
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:gravity="center"
-            android:src="@drawable/vinil_style_2"
+            android:src="@drawable/artists"
             android:textAlignment="gravity" />
 
         <LinearLayout
-            android:layout_width="160dp"
-            android:layout_height="100dp"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:orientation="vertical"
@@ -38,15 +39,15 @@
 
             <TextView
                 android:id="@+id/artist_name"
-                android:layout_width="150dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:text="@{artist.name}" />
 
 
             <TextView
                 android:id="@+id/album_recordLabel"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="235dp"
+                android:layout_height="150dp"
                 android:text="@{artist.description}" />
         </LinearLayout>
 

@@ -21,12 +21,10 @@ import com.example.moviles_g13.ui.adapters.ArtistsAdapter
 class ArtistsVisitorFragment : Fragment() {
     private var _binding: ArtistsVisitorFragmentBinding ? = null
 
-
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel:ArtistVisitorViewModel
     private var viewModelAdapter: ArtistsAdapter? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,25 +37,17 @@ class ArtistsVisitorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
-
-        view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
-            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
-        }
         recyclerView = binding.artistsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
         activity.actionBar?.title = getString(R.string.title_home)
         viewModel = ViewModelProvider(this,ArtistVisitorViewModel.Factory(activity.application)).get(ArtistVisitorViewModel::class.java)
-        viewModel.albums.observe(viewLifecycleOwner, Observer<List<Artist>> {
+        viewModel.artists.observe(viewLifecycleOwner, Observer<List<Artist>> {
             it.apply {
                 viewModelAdapter!!.artists = this
             }
@@ -65,7 +55,12 @@ class ArtistsVisitorFragment : Fragment() {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+
+        view.findViewById<ImageButton>(R.id.back_button_artist).setOnClickListener {
+            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
+        }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -77,9 +72,4 @@ class ArtistsVisitorFragment : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
-
-
-
-
-
 }
