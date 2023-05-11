@@ -1,16 +1,21 @@
 package com.example.moviles_g13.ui.artists_visitor
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.moviles_g13.model.Artist
 import com.example.moviles_g13.network.NetworkServiceAdapter
 import com.example.moviles_g13.repositories.ArtistRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ArtistVisitorViewModel (application: Application) :  AndroidViewModel(application) {
+class ArtistVisitorViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _artist = MutableLiveData<List<Artist>>()
     private val artistRepository = ArtistRepository(application)
@@ -33,18 +38,25 @@ class ArtistVisitorViewModel (application: Application) :  AndroidViewModel(appl
     }
 
     private fun refreshDataFromNetwork() {
-        artistRepository.refreshData({
-            _artist.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+
+        try {
+            viewModelScope.launch(Dispatchers.Default) {
+                withContext(Dispatchers.IO) {
+                    var data = artistRepository.refreshData()
+                    _artist.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        } catch (e: Exception) {
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
+
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ArtistVisitorViewModel::class.java)) {

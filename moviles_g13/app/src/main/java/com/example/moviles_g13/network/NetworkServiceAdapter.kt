@@ -11,6 +11,9 @@ import com.android.volley.toolbox.Volley
 import com.example.moviles_g13.model.Artist
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
@@ -29,10 +32,8 @@ class NetworkServiceAdapter constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
-    fun getArtists(
-        onComplete: (resp: List<Artist>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+
+    suspend fun getArtists() = suspendCoroutine<List<Artist>> { cont ->
         requestQueue.add(
             getRequest("musicians",
                 Response.Listener<String> { response ->
@@ -40,24 +41,24 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val list = mutableListOf<Artist>()
                     for (i in 0 until resp.length()) {
                         val item = resp.getJSONObject(i)
-                        list.add(
-                            i, Artist(
-                                artistId = item.getInt("id"),
-                                name = item.getString("name"),
-                                image = item.getString("image"),
-                                birthDate = item.getString("birthDate"),
-                                albums = item.getJSONArray("albums"),
-                                performerPrizes = item.getJSONArray("performerPrizes"),
-                                description = item.getString("description")
-                            )
+                        val artist = Artist(
+                            artistId = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            birthDate = item.getString("birthDate"),
+                            albums = item.getJSONArray("albums"),
+                            performerPrizes = item.getJSONArray("performerPrizes"),
+                            description = item.getString("description")
                         )
+                        list.add(i, artist)
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    cont.resumeWithException(it)
                 })
         )
+
     }
 
     private fun getRequest(
