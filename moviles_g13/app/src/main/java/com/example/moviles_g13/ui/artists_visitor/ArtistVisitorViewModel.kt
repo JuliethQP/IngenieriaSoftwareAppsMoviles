@@ -1,7 +1,9 @@
 package com.example.moviles_g13.ui.artists_visitor
 
 import android.app.Application
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -37,13 +39,14 @@ class ArtistVisitorViewModel(application: Application) : AndroidViewModel(applic
         refreshDataFromNetwork()
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun refreshDataFromNetwork() {
 
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
                     var data = artistRepository.refreshData()
-                    _artist.postValue(data)
+                    _artist.postValue(data as List<Artist>?)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
