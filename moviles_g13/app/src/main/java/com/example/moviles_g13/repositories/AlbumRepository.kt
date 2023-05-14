@@ -13,7 +13,6 @@ class AlbumRepository  (val application: Application){
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     suspend fun refreshData(): Any {
-
         var potentialRespx = CacheManager.getInstance(application.applicationContext).getAlbums()
 
         if(potentialRespx.isEmpty()){
@@ -24,5 +23,13 @@ class AlbumRepository  (val application: Application){
             Log.d("Cache decision", "return ${potentialRespx.size} elements from cache")
             return potentialRespx
         }
+    }
+
+    fun createAlbum(newAlbum: Album, callback: (Album)->Unit, onError: (VolleyError)->Unit) {
+        NetworkServiceAdapter.getInstance(application).createAlbum(newAlbum, {
+            callback(it)
+        },
+            onError
+        )
     }
 }

@@ -18,7 +18,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
-        const val BASE_URL = " https://back-vynils-group-13.herokuapp.com/"
+        const val BASE_URL = "https://back-vynils-group-13.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -88,6 +88,41 @@ class NetworkServiceAdapter constructor(context: Context) {
                 Response.ErrorListener {
                     cont.resumeWithException(it)
                 })
+        )
+    }
+
+    fun createAlbum(
+        newAlbum: Album,
+        onComplete: (resp: Album) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        val body: JSONObject = JSONObject()
+
+        body.put("name", newAlbum.name)
+        body.put("cover", newAlbum.cover)
+        body.put("releaseDate", newAlbum.releaseDate)
+        body.put("description", newAlbum.description)
+        body.put("genre", newAlbum.genre)
+        body.put("recordLabel", newAlbum.recordLabel)
+
+        requestQueue.add(
+            postRequest("albums", body,
+                Response.Listener<JSONObject> { response ->
+                    val newAlbum = Album(
+                        albumId = response.getInt("id"),
+                        name = response.getString("name"),
+                        cover = response.getString("cover"),
+                        releaseDate = response.getString("releaseDate"),
+                        description = response.getString("description"),
+                        genre = response.getString("genre"),
+                        recordLabel = response.getString("recordLabel")
+                    )
+                    onComplete(newAlbum)
+                },
+                Response.ErrorListener {
+                    onError(it)
+                }
+            )
         )
     }
 
