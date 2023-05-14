@@ -16,7 +16,6 @@ import com.example.moviles_g13.R
 import com.example.moviles_g13.databinding.CollectorsVisitorFragmentBinding
 import com.example.moviles_g13.model.Collector
 import com.example.moviles_g13.ui.adapters.CollectorsAdapter
-import com.example.moviles_g13.ui.collectors_visitor.CollectorsVisitorViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.

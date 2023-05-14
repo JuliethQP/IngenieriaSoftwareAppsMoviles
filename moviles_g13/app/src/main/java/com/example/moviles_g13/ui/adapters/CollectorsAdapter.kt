@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.example.moviles_g13.R
 import com.example.moviles_g13.databinding.CollectorsItemLayoutBinding
 import com.example.moviles_g13.model.Collector
-import com.example.moviles_g13.ui.collectors_visitor.CollectorsVisitorViewModel
 
 class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorsViewHolder>(){
     var collectors :List<Collector> = emptyList()

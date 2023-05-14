@@ -64,10 +64,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
 
-    fun getCollectors(
-        onComplete: (resp: List<Collector>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
         requestQueue.add(
             getRequest("collectors",
                 Response.Listener<String> { response ->
@@ -75,21 +72,21 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val list = mutableListOf<Collector>()
                     for (i in 0 until resp.length()) {
                         val item = resp.getJSONObject(i)
-                        list.add(
-                            i, Collector(
-                                collectorId = item.getInt("id"),
-                                name = item.getString("name"),
-                                telephone = item.getString("telephone"),
-                                email = item.getString("email")
-                            )
+                        val collector = Collector(
+                            collectorId = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email")
                         )
+                        list.add(i, collector)
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    cont.resumeWithException(it)
                 })
         )
+
     }
 
     fun getAlbums(
