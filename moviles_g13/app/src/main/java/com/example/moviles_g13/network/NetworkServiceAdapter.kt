@@ -63,10 +63,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
 
-    fun getAlbums(
-        onComplete: (resp: List<Album>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
         requestQueue.add(
             getRequest("albums",
                 Response.Listener<String> { response ->
@@ -86,10 +83,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 Response.ErrorListener {
-                    onError(it)
+                    cont.resumeWithException(it)
                 })
         )
     }
