@@ -24,7 +24,8 @@
             android:text="@string/form_create_description"
             android:textColor="#000"
             android:textSize="24dp"
-            app:autoSizeTextType="uniform"/>
+            app:autoSizeTextType="uniform"
+            tools:ignore="MissingConstraints" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/form_input_name"
@@ -44,7 +45,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_input_year"
+            android:id="@+id/form_input_release"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -53,7 +54,7 @@
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/form_input_text_year"
+                android:id="@+id/form_input_text_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cornerRadius="32dp"
@@ -61,16 +62,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_input_artist"
+            android:id="@+id/form_input_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/form_input_year"
+            app:layout_constraintTop_toBottomOf="@+id/form_input_release"
             app:cornerRadius="64dp"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/form_input_text_artist"
+                android:id="@+id/form_input_text_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cornerRadius="32dp"
@@ -78,11 +79,45 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/form_input_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/form_input_gender"
+            app:cornerRadius="64dp"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/form_input_text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cornerRadius="32dp"
+                android:hint="@string/str_form_6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/form_input_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/form_input_description"
+            app:cornerRadius="64dp"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/form_input_text_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cornerRadius="32dp"
+                android:hint="@string/str_form_4" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/form_input_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/form_input_artist"
+            app:layout_constraintTop_toBottomOf="@id/form_input_record"
             app:cornerRadius="64dp"
             tools:ignore="MissingConstraints">
 
@@ -91,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cornerRadius="32dp"
-                android:hint="@string/str_form_4" />
+                android:hint="@string/str_form_5" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

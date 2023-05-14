@@ -1,6 +1,7 @@
 package com.example.moviles_g13.network
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -140,9 +141,13 @@ class NetworkServiceAdapter constructor(context: Context) {
         responseListener: Response.Listener<JSONObject>,
         errorListener: Response.ErrorListener
     ): JsonObjectRequest {
+
+        Log.d("path", "$BASE_URL$path/")
+        Log.d("body", body.toString())
+
         return JsonObjectRequest(
             Request.Method.POST,
-            BASE_URL + path,
+            "$BASE_URL$path/",
             body,
             responseListener,
             errorListener
