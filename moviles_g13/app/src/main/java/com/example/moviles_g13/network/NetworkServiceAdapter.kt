@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.moviles_g13.model.Album
 import com.example.moviles_g13.model.Artist
+import com.example.moviles_g13.model.Collector
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -62,6 +63,31 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     }
 
+
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
+        requestQueue.add(
+            getRequest("collectors",
+                Response.Listener<String> { response ->
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Collector>()
+                    for (i in 0 until resp.length()) {
+                        val item = resp.getJSONObject(i)
+                        val collector = Collector(
+                            collectorId = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email")
+                        )
+                        list.add(i, collector)
+                    }
+                    cont.resume(list)
+                },
+                Response.ErrorListener {
+                    cont.resumeWithException(it)
+                })
+        )
+
+    }
 
     fun getAlbums(
         onComplete: (resp: List<Album>) -> Unit,
