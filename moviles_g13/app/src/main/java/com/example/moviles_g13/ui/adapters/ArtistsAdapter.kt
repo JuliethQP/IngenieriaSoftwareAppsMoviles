@@ -39,7 +39,7 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
         holder.viewDataBinding.root.setOnClickListener {
             val action = ArtistsVisitorFragmentDirections.actionArtistsVisitorFragmentToHomeVisitorFragment()
 
-            holder.viewDataBinding.root.findNavController().navigate(action)
+           // holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
@@ -59,7 +59,6 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.artistLogo)
-
         }
 
         companion object {

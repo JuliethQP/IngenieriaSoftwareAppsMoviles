@@ -38,6 +38,9 @@ class HomeVisitorFragment : Fragment() {
             findNavController().navigate(R.id.action_HomeVisitorFragment_to_artistsVisitorFragment)
         }
 
+        view.findViewById<Button>(R.id.collectors_button).setOnClickListener {
+            findNavController().navigate(R.id.action_HomeVisitorFragment_to_CollectorsVisitorFragment)
+        }
 
     }
 

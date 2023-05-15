@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_HomeVisitorFragment_to_artistsVisitorFragment"
             app:destination="@id/artistsVisitorFragment" />
+        <action
+            android:id="@+id/action_HomeVisitorFragment_to_CollectorsVisitorFragment"
+            app:destination="@id/CollectorsVisitorFragment" />
     </fragment>
 
     <!-- Navigation for Albums of visitors -->
@@ -52,17 +55,6 @@
             app:destination="@id/HomeVisitorFragment" />
     </fragment>
 
-    <!-- Navigation for collector -->
-    <fragment
-        android:id="@+id/HomeCollectorFragment"
-        android:name="com.example.moviles_g13.ui.home_collector.HomeCollectorFragment"
-        android:label="@string/collector_fragment_label"
-        tools:layout="@layout/collector_home_fragment">
-
-        <action
-            android:id="@+id/action_collector_to_home_layout"
-            app:destination="@id/HomeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/artistsVisitorFragment"
         android:name="com.example.moviles_g13.ui.artists_visitor.ArtistsVisitorFragment"
@@ -71,6 +63,47 @@
         <action
             android:id="@+id/action_artistsVisitorFragment_to_HomeVisitorFragment"
             app:destination="@id/HomeVisitorFragment" />
+    </fragment>
+
+    <!-- Navigation to Collectors for visitors -->
+    <fragment
+        android:id="@+id/CollectorsVisitorFragment"
+        android:name="com.example.moviles_g13.ui.collectors_visitor.CollectorsVisitorFragment"
+        android:label="collectors_visitor_fragment"
+        tools:layout="@layout/collectors_visitor_fragment">
+
+        <action
+            android:id="@+id/action_back_to_home_visitor"
+            app:destination="@id/HomeVisitorFragment" />
+    </fragment>
+
+    <!-- Navigation for collector -->
+    <fragment
+        android:id="@+id/HomeCollectorFragment"
+        android:name="com.example.moviles_g13.ui.home_collector.HomeCollectorFragment"
+        android:label="Collectors"
+        tools:layout="@layout/collector_home_fragment">
+
+        <action
+            android:id="@+id/action_collector_to_home_layout"
+            app:destination="@id/HomeFragment" />
+
+        <action
+            android:id="@+id/action_collector_to_create_album_layout"
+            app:destination="@id/createAlbumFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/createAlbumFragment"
+        android:name="com.example.moviles_g13.ui.create_album.CreateAlbumFragment"
+        android:label="@string/create_album"
+        tools:layout="@layout/create_album_layout" >
+
+        <action
+            android:id="@+id/action_create_album_to_HomeCollectorFragment"
+            app:destination="@id/HomeCollectorFragment" />
+
     </fragment>
 
 </navigation>

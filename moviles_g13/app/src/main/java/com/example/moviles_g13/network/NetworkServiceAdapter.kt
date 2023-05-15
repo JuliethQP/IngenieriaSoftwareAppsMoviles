@@ -1,6 +1,7 @@
 package com.example.moviles_g13.network
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -10,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.moviles_g13.model.Album
 import com.example.moviles_g13.model.Artist
+import com.example.moviles_g13.model.Collector
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -18,7 +20,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object {
-        const val BASE_URL = " https://back-vynils-group-13.herokuapp.com/"
+        const val BASE_URL = "https://back-vynils-group-13.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -62,11 +64,31 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     }
 
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
+        requestQueue.add(
+            getRequest("collectors",
+                Response.Listener<String> { response ->
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Collector>()
+                    for (i in 0 until resp.length()) {
+                        val item = resp.getJSONObject(i)
+                        val collector = Collector(
+                            collectorId = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email")
+                        )
+                        list.add(i, collector)
+                    }
+                    cont.resume(list)
+                },
+                Response.ErrorListener {
+                    cont.resumeWithException(it)
+                })
+        )
 
-    fun getAlbums(
-        onComplete: (resp: List<Album>) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+    }
+    suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
         requestQueue.add(
             getRequest("albums",
                 Response.Listener<String> { response ->
@@ -86,11 +108,46 @@ class NetworkServiceAdapter constructor(context: Context) {
                             )
                         )
                     }
-                    onComplete(list)
+                    cont.resume(list)
+                },
+                Response.ErrorListener {
+                    cont.resumeWithException(it)
+                })
+        )
+    }
+
+    fun createAlbum(
+        newAlbum: Album,
+        onComplete: (resp: Album) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        val body: JSONObject = JSONObject()
+
+        body.put("name", newAlbum.name)
+        body.put("cover", newAlbum.cover)
+        body.put("releaseDate", newAlbum.releaseDate)
+        body.put("description", newAlbum.description)
+        body.put("genre", newAlbum.genre)
+        body.put("recordLabel", newAlbum.recordLabel)
+
+        requestQueue.add(
+            postRequest("albums", body,
+                Response.Listener<JSONObject> { response ->
+                    val newAlbum = Album(
+                        albumId = response.getInt("id"),
+                        name = response.getString("name"),
+                        cover = response.getString("cover"),
+                        releaseDate = response.getString("releaseDate"),
+                        description = response.getString("description"),
+                        genre = response.getString("genre"),
+                        recordLabel = response.getString("recordLabel")
+                    )
+                    onComplete(newAlbum)
                 },
                 Response.ErrorListener {
                     onError(it)
-                })
+                }
+            )
         )
     }
 
@@ -110,7 +167,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     ): JsonObjectRequest {
         return JsonObjectRequest(
             Request.Method.POST,
-            BASE_URL + path,
+            "$BASE_URL$path/",
             body,
             responseListener,
             errorListener

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
 import com.example.moviles_g13.R
@@ -27,6 +28,10 @@ class HomeCollectorFragment : Fragment() {
 
         view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
             findNavController().navigate(R.id.action_collector_to_home_layout)
+        }
+
+        view.findViewById<Button>(R.id.album_button).setOnClickListener {
+            findNavController().navigate(R.id.action_collector_to_create_album_layout)
         }
 
     }
