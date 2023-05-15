@@ -102,7 +102,7 @@ public class TestVinilos {
 
         artistsBtn.perform((click()));
         onView(allOf(withId(R.id.company_text), withText("Artists"),isDisplayed()));
-        ViewInteraction backBtn = onView(allOf(withId(R.id.back_button),isDisplayed()));
+        ViewInteraction backBtn = onView(allOf(withId(R.id.back_button_artist),isDisplayed()));
         backBtn.perform((click()));
     }
 
