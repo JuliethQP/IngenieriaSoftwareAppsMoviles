@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.collector_button).setOnClickListener {
-            findNavController().navigate(R.id.action_HomeVisitorFragment_to_artistsVisitorFragment)
+            findNavController().navigate(R.id.action_home_to_collector_layout)
         }
     }
 }

@@ -33,4 +33,12 @@
     <string name="menu_collections">Collecionistas</string>
     <string name="album_fragment_label">Albums</string>
     <string name="back_button_description"></string>
+    <string name="create_album">Crear Album</string>
+    <string name="form_create_description">En este formulario podràs diligenciar toda la información asociada a un album</string>
+    <string name="str_form_1">Nombre</string>
+    <string name="str_form_2">Fecha de lanzamiento</string>
+    <string name="str_form_3">Genero</string>
+    <string name="str_form_4">Record</string>
+    <string name="str_form_5">URL Cover</string>
+    <string name="str_form_6">Descripción</string>
 </resources>
