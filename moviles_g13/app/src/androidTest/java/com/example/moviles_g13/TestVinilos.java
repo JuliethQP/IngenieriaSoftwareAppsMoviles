@@ -89,13 +89,12 @@ public class TestVinilos {
 
          artistsBtn.perform((click()));
         onView(allOf(withId(R.id.company_text), withText("Artists"),isDisplayed()));
-        ViewInteraction backBtn = onView(allOf(withId(R.id.back_button),isDisplayed()));
-        //backBtn.perform((click()));
+
     }
 
     @Test
     public void mainAcitivityTest5() {
-        /* #5: Flecha de atrás redirige correctamente: Ingresar a la aplicación, clic en botón Visitantes, clic en álbumes, redirección exitosa al listado de álbumes, clic en flecha atrás, redirige a pantalla principal de visitante, clic en fecha de atrás, redirige a pantalla principal.*/
+        /* #6:flecha de atrás redirige correctamente: Ingresar a la aplicación, clic en botón Visitantes, clic en álbumes, redirección exitosa al listado de álbumes, clic en flecha atrás, redirige a pantalla principal de visitante, clic en fecha de atrás, redirige a pantalla principal..*/
 
         ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
         visitorBtn.perform(click());
@@ -104,7 +103,7 @@ public class TestVinilos {
         artistsBtn.perform((click()));
         onView(allOf(withId(R.id.company_text), withText("Artists"),isDisplayed()));
         ViewInteraction backBtn = onView(allOf(withId(R.id.back_button),isDisplayed()));
-        //backBtn.perform((click()));
+        backBtn.perform((click()));
     }
 
 
