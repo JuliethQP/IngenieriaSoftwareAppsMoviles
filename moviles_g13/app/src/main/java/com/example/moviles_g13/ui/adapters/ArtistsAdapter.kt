@@ -59,7 +59,6 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .error(R.drawable.ic_broken_image))
                 .into(viewDataBinding.artistLogo)
-
         }
 
         companion object {

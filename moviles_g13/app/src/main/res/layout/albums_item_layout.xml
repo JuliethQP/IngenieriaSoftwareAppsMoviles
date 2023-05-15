@@ -24,7 +24,7 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:textAlignment="gravity"
-            android:src="@drawable/vinil_style_2"/>
+            android:src="@drawable/albums"/>
 
         <LinearLayout
             android:orientation="vertical"
