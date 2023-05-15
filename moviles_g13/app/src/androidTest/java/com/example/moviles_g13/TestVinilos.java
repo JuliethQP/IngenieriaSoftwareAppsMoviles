@@ -29,35 +29,19 @@ public class TestVinilos {
     public ActivityScenarioRule<MainActivity> mActivityTestRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void mainAcitivityTest(){
+    public void btnVisitorRedirectoToMainScreen(){
         /* #1: Botón de Visitante redirige a su pantalla principal: Ingresar a la aplicación, clic en botón Visitantes, sale exitosamente pantalla con botones de Álbumes, Artistas y Coleccionistas.*/
 
         ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
         visitorBtn.perform(click());
-
         ViewInteraction albumBtn = onView(allOf(withId(R.id.albums_button), withText("Álbumes"),isDisplayed()));
         ViewInteraction artistsBtn = onView(allOf(withId(R.id.artists_button), withText("Artistas"),isDisplayed()));
         ViewInteraction collectorsBtn = onView(allOf(withId(R.id.collectors_button), withText("Coleccionistas"),isDisplayed()));
 
-
-
-
-
-        //loginBtn.perform(click());
-
-        //ViewInteraction usernameTxt = onView(withId(R.id.username));
-        //usernameTxt.perform(scrollTo(), replaceText("monbi202010@gmail.com"), closeSoftKeyboard());
-
-        //ViewInteraction pwdTxt = onView(withId(R.id.password));
-        //pwdTxt.perform(scrollTo(), replaceText("123456789MISO"), closeSoftKeyboard());
-
-        //ViewInteraction confirmLoginBtn = onView(allOf(withId(R.id.login_btn), withText("Login")));
-        //confirmLoginBtn.perform(scrollTo(), click());
-
     }
 
     @Test
-    public void mainAcitivityTest2() {
+    public void btnAlbumRedirectToListOfMainScreenId2andId4() {
         /* #2 y #4: Botón de Álbumes redirige a su listado: Ingresar a la aplicación, clic en botón Visitantes, clic en álbumes, redirección exitosa al listado de álbumes*/
 
         ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
@@ -68,7 +52,7 @@ public class TestVinilos {
     }
 
     @Test
-    public void mainAcitivityTest3() {
+    public void backButtonRedirecFromAlbumsScreenToMainScreen() {
         /* #3: Flecha de atrás redirige correctamente: Ingresar a la aplicación, clic en botón Visitantes, clic en álbumes, redirección exitosa al listado de álbumes, clic en flecha atrás, redirige a pantalla principal de visitante, clic en fecha de atrás, redirige a pantalla principal.*/
         ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
         visitorBtn.perform(click());
@@ -80,7 +64,7 @@ public class TestVinilos {
     }
 
     @Test
-    public void mainAcitivityTest4() {
+    public void artistButtonRedirectToArtistListScreen() {
         /* #5: Botón de Artistas redirige a su listado: Ingresar a la aplicación, clic en botón Visitantes, clic en artistas, redirección exitosa al listado de artistas.*/
 
         ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
@@ -93,7 +77,7 @@ public class TestVinilos {
     }
 
     @Test
-    public void mainAcitivityTest5() {
+    public void backButtonArtistScreenRedirectoToMainScreen() {
         /* #6:flecha de atrás redirige correctamente: Ingresar a la aplicación, clic en botón Visitantes, clic en álbumes, redirección exitosa al listado de álbumes, clic en flecha atrás, redirige a pantalla principal de visitante, clic en fecha de atrás, redirige a pantalla principal..*/
 
         ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
@@ -106,5 +90,16 @@ public class TestVinilos {
         backBtn.perform((click()));
     }
 
+    @Test
+    public void collectorBttnRedirectToListCollectors() {
+        /* #7: Botón de Coleccionistas redirige a su listado: Ingresar a la aplicación, clic en botón Visitantes, clic en coleccionistas, redirección exitosa al listado de coleccionistas*/
+        ViewInteraction visitorBtn = onView(allOf(withId(R.id.visitor_button), withText("Visitante"),isDisplayed()));
+        visitorBtn.perform(click());
 
+        ViewInteraction collectorsBtn = onView(allOf(withId(R.id.collectors_button), withText("Coleccionistas"),isDisplayed()));
+        collectorsBtn.perform(click());
+
+        onView(allOf(withId(R.id.company_text), withText("Coleccionistas"),isDisplayed()));
+
+    }
 }
