@@ -141,10 +141,6 @@ class NetworkServiceAdapter constructor(context: Context) {
         responseListener: Response.Listener<JSONObject>,
         errorListener: Response.ErrorListener
     ): JsonObjectRequest {
-
-        Log.d("path", "$BASE_URL$path/")
-        Log.d("body", body.toString())
-
         return JsonObjectRequest(
             Request.Method.POST,
             "$BASE_URL$path/",

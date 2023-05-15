@@ -38,6 +38,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>(){
         holder.viewDataBinding.also {
             it.album = albums[position]
         }
+        holder.bind(albums[position])
     }
 
     override fun getItemCount(): Int {

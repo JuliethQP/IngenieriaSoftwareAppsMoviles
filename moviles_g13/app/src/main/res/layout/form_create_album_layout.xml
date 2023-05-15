@@ -32,6 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:background="#e0e0e0"
+            android:textColor="#000"
             app:layout_constraintTop_toBottomOf="@+id/form_description_text"
             app:cornerRadius="64dp"
             tools:ignore="MissingConstraints">
@@ -40,6 +42,8 @@
                 android:id="@+id/form_input_text_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#e0e0e0"
+                android:textColor="#000"
                 app:cornerRadius="32dp"
                 android:hint="@string/str_form_1"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -57,6 +61,8 @@
                 android:id="@+id/form_input_text_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#e0e0e0"
+                android:textColor="#000"
                 app:cornerRadius="32dp"
                 android:hint="@string/str_form_2" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,12 +76,14 @@
             app:cornerRadius="64dp"
             tools:ignore="MissingConstraints">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/form_input_text_gender"
+            <Spinner
+                android:id="@+id/form_spinner_text_gender"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
+                android:background="#e0e0e0"
+                android:textColor="#000"
                 app:cornerRadius="32dp"
-                android:hint="@string/str_form_3" />
+                android:hint="@string/str_form_4" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,6 +100,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cornerRadius="32dp"
+                android:background="#e0e0e0"
+                android:textColor="#000"
                 android:hint="@string/str_form_6" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,12 +114,15 @@
             app:cornerRadius="64dp"
             tools:ignore="MissingConstraints">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/form_input_text_record"
+            <Spinner
+                android:id="@+id/form_spinner_text_record"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
+                android:background="#e0e0e0"
+                android:textColor="#000"
                 app:cornerRadius="32dp"
                 android:hint="@string/str_form_4" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -125,6 +138,8 @@
                 android:id="@+id/form_input_text_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#e0e0e0"
+                android:textColor="#000"
                 app:cornerRadius="32dp"
                 android:hint="@string/str_form_5" />
         </com.google.android.material.textfield.TextInputLayout>

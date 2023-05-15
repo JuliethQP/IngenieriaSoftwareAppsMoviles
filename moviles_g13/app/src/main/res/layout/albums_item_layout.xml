@@ -23,7 +23,8 @@
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:gravity="center"
-            android:textAlignment="gravity"/>
+            android:textAlignment="gravity"
+            android:src="@drawable/albums"/>
 
         <LinearLayout
             android:orientation="vertical"
