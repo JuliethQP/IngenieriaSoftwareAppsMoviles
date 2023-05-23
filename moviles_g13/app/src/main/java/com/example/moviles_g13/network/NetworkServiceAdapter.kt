@@ -88,6 +88,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
 
     }
+
     suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
         requestQueue.add(
             getRequest("albums",
@@ -111,6 +112,33 @@ class NetworkServiceAdapter constructor(context: Context) {
                     cont.resume(list)
                 },
                 Response.ErrorListener {
+                    cont.resumeWithException(it)
+                })
+        )
+    }
+
+    suspend fun getAlbum(id: Int): Album = suspendCoroutine { cont ->
+        requestQueue.add(
+            getRequest("albums/$id",
+                { response ->
+                    val resp = JSONArray(response)
+                    if (resp.length() > 0) {
+                        val item = resp.getJSONObject(0)
+                        val album = Album(
+                            albumId = item.getInt("id"),
+                            name = item.getString("name"),
+                            cover = item.getString("cover"),
+                            releaseDate = item.getString("releaseDate"),
+                            description = item.getString("description"),
+                            genre = item.getString("genre"),
+                            recordLabel = item.getString("recordLabel")
+                        )
+                        cont.resume(album)
+                    } else {
+                        cont.resumeWithException(Exception("No album found"))
+                    }
+                },
+                {
                     cont.resumeWithException(it)
                 })
         )

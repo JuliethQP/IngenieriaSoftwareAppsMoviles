@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false">
+
+    <data>
+        <variable
+            name="album"
+            type="com.example.moviles_g13.model.Album" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="395dp"
+        android:layout_height="725dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="20dp">
+        <TextView
+            android:id="@+id/album_name"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{album.name}"/>
+        <ImageView
+            android:id="@+id/album_logo"
+            android:layout_width="390dp"
+            android:layout_height="350dp"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:src="@drawable/albums"/>
+        <TextView
+            android:id="@+id/album_genre"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{album.genre}"/>
+        <TextView
+            android:id="@+id/album_recordLabel"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{album.recordLabel}"/>
+        <TextView
+            android:id="@+id/album_description"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{album.description}"/>
+        <TextView
+            android:id="@+id/album_id"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:text="@{album.albumId}"/>
+    </LinearLayout>
+
+</layout>

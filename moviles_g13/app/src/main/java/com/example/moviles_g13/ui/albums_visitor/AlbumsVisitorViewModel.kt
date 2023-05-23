@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.moviles_g13.model.Album
-import com.example.moviles_g13.model.Artist
 import com.example.moviles_g13.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 class AlbumsVisitorViewModel  (application: Application) : AndroidViewModel(application) {
 
     private val _albums = MutableLiveData<List<Album>>()
