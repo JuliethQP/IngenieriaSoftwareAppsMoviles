@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.R
 import com.example.moviles_g13.databinding.ArtistsVisitorFragmentBinding
+
 import com.example.moviles_g13.model.Artist
 import com.example.moviles_g13.ui.adapters.ArtistsAdapter
 
@@ -58,6 +60,10 @@ class ArtistsVisitorFragment : Fragment() {
 
         view.findViewById<ImageButton>(R.id.back_button_artist).setOnClickListener {
             findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
+        }
+
+        view.findViewById<Button>(R.id.awards_button).setOnClickListener {
+            findNavController().navigate(R.id.action_artistsVisitorFragment_to_createPrizeToArtistFragment)
         }
     }
 

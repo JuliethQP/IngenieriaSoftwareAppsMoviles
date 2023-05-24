@@ -1,7 +1,6 @@
 package com.example.moviles_g13.network
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -12,6 +11,7 @@ import com.android.volley.toolbox.Volley
 import com.example.moviles_g13.model.Album
 import com.example.moviles_g13.model.Artist
 import com.example.moviles_g13.model.Collector
+import com.example.moviles_g13.model.Prize
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -88,6 +88,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
 
     }
+
     suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
         requestQueue.add(
             getRequest("albums",
@@ -150,6 +151,35 @@ class NetworkServiceAdapter constructor(context: Context) {
             )
         )
     }
+
+    /*fun createPrize(
+        newPrize: () -> Unit,
+        onComplete: (resp: Prize) -> Unit,
+        onError: (error: VolleyError) -> Unit
+    ) {
+        val body: JSONObject = JSONObject()
+        body.put("name", newPrize.name)
+        body.put("description", newPrize.description)
+        body.put("organization", newPrize.organization)
+
+        requestQueue.add(
+            postRequest("prizes", body,
+                { response ->
+                    val newPrize = Prize(
+                        prizeId = response.getInt("id"),
+                        name = response.getString("name"),
+                        description = response.getString("description"),
+                        organization = response.getString("organization")
+                    )
+                    onComplete(newPrize)
+                },
+                {
+                    onError(it)
+                }
+            )
+        )
+    }*/
+
 
     private fun getRequest(
         path: String,
