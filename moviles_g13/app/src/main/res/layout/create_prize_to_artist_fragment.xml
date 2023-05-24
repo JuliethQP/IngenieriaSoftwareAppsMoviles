@@ -6,16 +6,23 @@
 
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="ui.create_awards.CreatePrizeToArtistFragment">
-
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        android:layout_height="match_parent">
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            tools:context="ui.create_awards.CreatePrizeToArtistFragment">
 
-    </FrameLayout>
+            <!-- TODO: Update blank fragment layout -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Crear premio" />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
