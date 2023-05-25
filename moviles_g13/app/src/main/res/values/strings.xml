@@ -42,6 +42,6 @@
     <string name="str_form_5">URL Cover</string>
     <string name="str_form_6">Descripción</string>
     <string name="collector_phone">Teléfono:</string>
-    <string name="collector_email">Email:</string>
+    <string name="collector_email">E-mail:</string>
     <string name="collector_albums">Albums a la venta:</string>
 </resources>

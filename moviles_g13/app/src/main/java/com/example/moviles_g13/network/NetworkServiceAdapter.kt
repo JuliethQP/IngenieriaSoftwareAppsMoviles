@@ -138,7 +138,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                             val collectorAlbum = CollectorAlbum(
                                 albumId = itemCollectorAlbum.getInt("id"),
                                 price = itemCollectorAlbum.getInt("price"),
-                                status = item.getString("status")
+                                status = itemCollectorAlbum.getString("status")
                             )
                             listCollectorAlbums.add(collectorAlbum)
                         }

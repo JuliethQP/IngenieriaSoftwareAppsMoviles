@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.moviles_g13.databinding.CollectorsDetailFragmentBinding
+import com.example.moviles_g13.ui.adapters.CollectorsDetailAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -18,43 +22,64 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CollectorsDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private var _binding: CollectorsDetailFragmentBinding? = null
+
+    private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewModel: CollectorsDetailViewModel
+    private var viewModelAdapter: CollectorsDetailAdapter? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        _binding = CollectorsDetailFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+        viewModelAdapter = CollectorsDetailAdapter()
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView = binding.recyclerViewDetailCollector
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = viewModelAdapter
+
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+
+        activity.actionBar?.title = getString(R.string.title_home)
+        val args: CollectorsDetailFragmentArgs by navArgs()
+        viewModel = ViewModelProvider(this, CollectorsDetailViewModel.Factory(
+            activity.application, args.collectorId)).get(
+            CollectorsDetailViewModel::class.java)
+
+        viewModel.collector.observe(viewLifecycleOwner) {
+            it.apply {
+                viewModelAdapter!!.collectorDetail = this
+            }
+        }
+        viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
+            if (isNetworkError) onNetworkError()
+        }
+
+        view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
+            findNavController().navigate(
+                R.id.action_collectorsDetailFragment_to_CollectorsVisitorFragment)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.collectors_detail_fragment, container, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CollectorsDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CollectorsDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun onNetworkError() {
+        if (!viewModel.isNetworkEventErrorShown.value!!) {
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
+        }
     }
 }
