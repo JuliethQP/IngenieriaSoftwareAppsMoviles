@@ -43,5 +43,5 @@
     <string name="str_form_6">Descripción</string>
     <string name="collector_phone">Teléfono:</string>
     <string name="collector_email">E-mail:</string>
-    <string name="collector_albums">Albums a la venta:</string>
+    <string name="collector_albums">Álbumes a la venta:</string>
 </resources>

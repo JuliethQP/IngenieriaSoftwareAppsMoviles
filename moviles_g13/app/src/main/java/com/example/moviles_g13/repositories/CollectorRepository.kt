@@ -4,6 +4,7 @@ import android.app.Application
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.moviles_g13.dto.CollectorDetail
 import com.example.moviles_g13.network.CacheManager
 import com.example.moviles_g13.network.NetworkServiceAdapter
 
@@ -26,6 +27,15 @@ class CollectorRepository(val application: Application) {
     }
 
     suspend fun refreshData(id: Int): Any {
-        return NetworkServiceAdapter.getInstance(application.applicationContext).getCollector(id)
+        val collectorDetail: CollectorDetail =
+            NetworkServiceAdapter.getInstance(application.applicationContext).getCollector(id)
+        var favoritePerforms = "Artistas favoritos: "
+
+        for (i in 0 until collectorDetail.favoritePerformList.size) {
+            favoritePerforms = favoritePerforms + collectorDetail.favoritePerformList.get(i) + ","
+        }
+
+        collectorDetail.favoritePerforms = favoritePerforms.substring(0, favoritePerforms.length - 1)
+        return collectorDetail
     }
 }

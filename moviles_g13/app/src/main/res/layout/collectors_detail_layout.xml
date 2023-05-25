@@ -52,14 +52,15 @@
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:text="@{collector.favoritePerforms}"/>
         <TextView
             android:id="@+id/collector_albums"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:text="@string/collector_albums"/>
     </LinearLayout>
 

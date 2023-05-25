@@ -150,7 +150,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                             telephone = item.getString("telephone"),
                             email = item.getString("email"),
                             collectorAlbums = listCollectorAlbums,
-                            favoritePerform = listFavoritePerformers
+                            favoritePerformList = listFavoritePerformers,
+                            favoritePerforms = ""
                         )
                         cont.resume(collectorDetail)
                     } else {
