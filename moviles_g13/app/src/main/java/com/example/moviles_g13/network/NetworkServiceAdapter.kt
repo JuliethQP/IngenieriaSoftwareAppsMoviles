@@ -1,7 +1,6 @@
 package com.example.moviles_g13.network
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -9,9 +8,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.moviles_g13.model.Album
-import com.example.moviles_g13.model.Artist
-import com.example.moviles_g13.model.Collector
+import com.example.moviles_g13.dto.CollectorAlbum
+import com.example.moviles_g13.dto.CollectorDetail
+import com.example.moviles_g13.model.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -113,6 +112,55 @@ class NetworkServiceAdapter constructor(context: Context) {
                 Response.ErrorListener {
                     cont.resumeWithException(it)
                 })
+        )
+    }
+
+    suspend fun getCollector(id: Int): CollectorDetail = suspendCoroutine { cont ->
+        requestQueue.add(
+            getRequest("collectors/$id",
+                { response ->
+                    val item = JSONObject(response)
+                    if (item.has("id")&&item.has("name")) {
+
+                        // Get the favorite performers list
+                        val favoritePerformers = item.getJSONArray("favoritePerformers")
+                        val listFavoritePerformers = mutableListOf<String>()
+                        for (i in 0 until favoritePerformers.length()) {
+                            val itemPerformer = favoritePerformers.getJSONObject(i)
+                            listFavoritePerformers.add(itemPerformer.getString("name"))
+                        }
+
+                        //Get the collector albums id list
+                        val collectorAlbums = item.getJSONArray("collectorAlbums")
+                        val listCollectorAlbums = mutableListOf<CollectorAlbum>()
+                        for (i in 0 until collectorAlbums.length()) {
+                            val itemCollectorAlbum = collectorAlbums.getJSONObject(i)
+                            val collectorAlbum = CollectorAlbum(
+                                albumId = itemCollectorAlbum.getInt("id"),
+                                price = itemCollectorAlbum.getInt("price"),
+                                status = item.getString("status")
+                            )
+                            listCollectorAlbums.add(collectorAlbum)
+                        }
+
+                        //Get the final collector detail object
+                        val collectorDetail = CollectorDetail(
+                            collectorId = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email"),
+                            collectorAlbums = listCollectorAlbums,
+                            favoritePerform = listFavoritePerformers
+                        )
+                        cont.resume(collectorDetail)
+                    } else {
+                        cont.resumeWithException(Exception("Invalid collector data"))
+                    }
+                },
+                {
+                    cont.resumeWithException(it)
+                }
+            )
         )
     }
 

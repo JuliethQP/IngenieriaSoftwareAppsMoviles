@@ -4,8 +4,6 @@ import android.app.Application
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.android.volley.VolleyError
-import com.example.moviles_g13.model.Collector
 import com.example.moviles_g13.network.CacheManager
 import com.example.moviles_g13.network.NetworkServiceAdapter
 
@@ -25,5 +23,9 @@ class CollectorRepository(val application: Application) {
             Log.d("Cache decision", "return ${potentialRespx.size} elements from cache")
             return potentialRespx
         }
+    }
+
+    suspend fun refreshData(id: Int): Any {
+        return NetworkServiceAdapter.getInstance(application.applicationContext).getCollector(id)
     }
 }
