@@ -121,9 +121,8 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(
             getRequest("albums/$id",
                 { response ->
-                    val resp = JSONArray(response)
-                    if (resp.length() > 0) {
-                        val item = resp.getJSONObject(0)
+                    val item = JSONObject(response)
+                    if (item.has("id") && item.has("name")&&item.has("cover")) {
                         val album = Album(
                             albumId = item.getInt("id"),
                             name = item.getString("name"),
@@ -135,7 +134,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                         )
                         cont.resume(album)
                     } else {
-                        cont.resumeWithException(Exception("No album found"))
+                        cont.resumeWithException(Exception("Invalid album data"))
                     }
                 },
                 {

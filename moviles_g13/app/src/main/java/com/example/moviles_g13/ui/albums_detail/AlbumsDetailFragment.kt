@@ -1,17 +1,23 @@
 package com.example.moviles_g13.ui.albums_detail
 
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.R
@@ -56,8 +62,9 @@ class AlbumsDetailFragment : Fragment() {
         }
 
         activity.actionBar?.title = getString(R.string.title_home)
+        val args: AlbumsDetailFragmentArgs by navArgs()
         viewModel = ViewModelProvider(this, AlbumsDetailViewModel.Factory(
-            activity.application, )).get(
+            activity.application, args.albumId)).get(
             AlbumsDetailViewModel::class.java)
         viewModel.album.observe(viewLifecycleOwner, Observer<Album> {
             it.apply {
@@ -71,6 +78,13 @@ class AlbumsDetailFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
             findNavController().navigate(R.id.action_albumsDetailFragment_to_AlbumsVisitorFragment)
         }
+
+        /*val genreLabel = getString(R.string.genre)
+        val albumGenreTextView: TextView = view.findViewById(R.id.album_genre)
+        val genreText = "$genreLabel $"
+        val spannableString = SpannableString(genreText)
+        spannableString.setSpan(StyleSpan(Typeface.BOLD),0, genreLabel.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        albumGenreTextView.text = spannableString*/
     }
 
     override fun onDestroyView() {
