@@ -35,9 +35,7 @@ class AlbumsVisitorViewModel  (application: Application) : AndroidViewModel(appl
         get() = _isNetworkErrorShown
 
     init {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            refreshDataFromNetwork()
-        }
+        refreshDataFromNetwork()
     }
 
 
