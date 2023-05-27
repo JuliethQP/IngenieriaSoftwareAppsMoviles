@@ -34,7 +34,8 @@
             android:layout_height="72dp"
             android:gravity="center"
             android:textAlignment="gravity"
-            android:src="@drawable/vinil_style_2" />
+            android:src="@drawable/vinil_style_2"
+            android:contentDescription = "logo de de una empresa"/>
     </LinearLayout>
 
     <RelativeLayout

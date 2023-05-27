@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="32dp"
-    tools:context=".ui.home_visitor.HomeVisitorFragment">
+    android:background="#F5F5F5"
+    tools:context=".ui.home_visitor.HomeVisitorFragment"
+    >
 
     <ImageButton
         android:id="@+id/back_button"
@@ -18,7 +20,8 @@
         android:background="#fff"
         android:src="@drawable/previous_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription = "@string/boton_para_devolverse"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -47,7 +50,8 @@
             android:layout_height="72dp"
             android:gravity="center"
             android:textAlignment="gravity"
-            android:src="@drawable/vinil_style_2" />
+            android:src="@drawable/vinil_style_2"
+            android:contentDescription ="logo de una empresa"/>
     </LinearLayout>
 
     <RelativeLayout

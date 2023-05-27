@@ -41,4 +41,16 @@
     <string name="str_form_4">Record</string>
     <string name="str_form_5">URL Cover</string>
     <string name="str_form_6">Descripción</string>
+
+    <string name="create_prize">Crear premios</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="simbolo_corazon">simbolo de corazon</string>
+    <string name="simbolo_de_corazon">simbolo de corazon</string>
+    <string name="boton_para_devolverse">boton para devolverse</string>
+    <string name="artists">Artists</string>
+    <string name="go_back_to_previous_screen">Go back to previous screen</string>
+    <string name="menu">menu</string>
+
+
 </resources>

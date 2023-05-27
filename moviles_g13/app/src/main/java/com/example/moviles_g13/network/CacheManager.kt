@@ -33,6 +33,8 @@ class CacheManager(context: Context) {
         }
     }
 
+
+
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     private var albums: ArrayMap<Int, List<Album>> = ArrayMap()
 
