@@ -10,5 +10,4 @@ data class Artist(
     val birthDate:String,
     val albums: JSONArray,
     val performerPrizes: JSONArray
-
 )

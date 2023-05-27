@@ -43,11 +43,6 @@ class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>() {
             holder.viewDataBinding.root.findNavController().navigate(action)
 
         }
-        holder.viewDataBinding.root.setOnClickListener {
-            val action =
-                ArtistsVisitorFragmentDirections.actionArtistsVisitorFragmentToCreatePrizeToArtistFragment()
-            holder.viewDataBinding.root.findNavController().navigate(action)
-        }
     }
 
     override fun getItemCount(): Int {

@@ -1,59 +1,158 @@
 package com.example.moviles_g13
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.example.moviles_g13.databinding.CreatePrizeToArtistFragmentBinding
+import com.example.moviles_g13.model.Prize
+import com.example.moviles_g13.ui.adapters.PrizesAdapter
+import com.example.moviles_g13.ui.create_awards.CreatePrizeArtistViewModel
+import com.google.android.material.textfield.TextInputEditText
+import androidx.lifecycle.viewModelScope
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CreatePrizeToArtistFragment1.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class CreatePrizeToArtistFragment1 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: CreatePrizeToArtistFragmentBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewModel: CreatePrizeArtistViewModel
+    private var viewModelAdapter: PrizesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.create_prize_to_artist_fragment, container, false)
+        _binding = CreatePrizeToArtistFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+        viewModelAdapter = PrizesAdapter()
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CreatePrizeToArtistFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CreatePrizeToArtistFragment1().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Button>(R.id.create_prize_button).setOnClickListener {
+            val organizationPrizeInput =
+                view.findViewById<TextInputEditText>(R.id.form_input_organization_prize).text.toString()
+            val nameInput =
+                view.findViewById<TextInputEditText>(R.id.form_input_name).text.toString()
+            val descriptionInput =
+                view.findViewById<TextInputEditText>(R.id.form_input_description_prize).text.toString()
+            lifecycleScope.launchWhenStarted {
+                createPrize(organizationPrizeInput, nameInput, descriptionInput)
+            }
+        }
+
+        view.findViewById<ImageButton>(R.id.back_button_prize).setOnClickListener {
+            findNavController().navigate(R.id.action_createPrizeToArtistFragment_to_HomeCollectorFragment)
+        }
+    }
+
+
+    private suspend fun createPrize(
+        organizationPrizeInput: String,
+        nameInput: String,
+        descriptionInput: String
+    ) {
+        try {
+            if (organizationPrizeInput.isNotEmpty() && nameInput.isNotEmpty() && descriptionInput.isNotEmpty()) {
+                val newPrize: Prize = Prize(
+                    prizeId = 0,
+                    name = nameInput,
+                    description = descriptionInput,
+                    organization = organizationPrizeInput
+
+                )
+                viewModel.createPrize(newPrize);
+                mostrarModalError("Exito", "Se creo el premio exitosamente");
+                findNavController().navigate(R.id.action_createPrizeToArtistFragment_to_HomeCollectorFragment)
+            } else {
+                mostrarModalError("Alerta", "Los campos no deben estar vacios")
+            }
+
+        } catch (e: Exception) {
+            mostrarModalError("Error", "Ocurrió un error al crear el premio.")
+            e.printStackTrace()
+
+        }
+
+    }
+
+    private fun mostrarModal() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Crear premio")
+        builder.setMessage("Exitoso")
+        builder.setPositiveButton("Aceptar",
+            DialogInterface.OnClickListener { dialog, which ->
+                // Acciones a realizar cuando se hace clic en Aceptar
+            })
+        builder.setNegativeButton("Cancelar",
+            DialogInterface.OnClickListener { dialog, which ->
+                // Acciones a realizar cuando se hace clic en Cancelar
+            })
+        builder.show()
+    }
+
+    private fun mostrarModalError(titulo: String, mensaje: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(titulo)
+        builder.setMessage(mensaje)
+        builder.setPositiveButton("Aceptar", null)
+        builder.show()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+        activity.actionBar?.title = getString(R.string.create_prize)
+        viewModel =
+            ViewModelProvider(this, CreatePrizeArtistViewModel.Factory(activity.application)).get(
+                CreatePrizeArtistViewModel::class.java
+            )
+        viewModel.prizes.observe(viewLifecycleOwner, Observer<List<Prize>> {
+            it.apply {
+                viewModelAdapter!!.prizes = this
+                if (this.isEmpty()) {
+                    binding.linearLayout2.visibility = View.VISIBLE
+                } else {
+                    binding.linearLayout2.visibility = View.GONE
                 }
             }
+        })
+        viewModel.eventNetworkError.observe(
+            viewLifecycleOwner,
+            Observer<Boolean> { isNetworkError ->
+                if (isNetworkError) onNetworkError()
+            })
     }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun onNetworkError() {
+        if (!viewModel.isNetworkErrorShown.value!!) {
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
+        }
+    }
+
 }

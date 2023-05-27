@@ -39,25 +39,26 @@ class NetworkServiceAdapter constructor(context: Context) {
     suspend fun getArtists() = suspendCoroutine<List<Artist>> { cont ->
         requestQueue.add(
             getRequest("musicians",
-                Response.Listener<String> { response ->
+                { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Artist>()
                     for (i in 0 until resp.length()) {
                         val item = resp.getJSONObject(i)
-                        val artist = Artist(
-                            artistId = item.getInt("id"),
-                            name = item.getString("name"),
-                            image = item.getString("image"),
-                            birthDate = item.getString("birthDate"),
-                            albums = item.getJSONArray("albums"),
-                            performerPrizes = item.getJSONArray("performerPrizes"),
-                            description = item.getString("description")
+                        list.add(
+                            i, Artist(
+                                artistId = item.getInt("id"),
+                                name = item.getString("name"),
+                                image = item.getString("image"),
+                                birthDate = item.getString("birthDate"),
+                                albums = item.getJSONArray("albums"),
+                                performerPrizes = item.getJSONArray("performerPrizes"),
+                                description = item.getString("description")
+                            )
                         )
-                        list.add(i, artist)
                     }
                     cont.resume(list)
                 },
-                Response.ErrorListener {
+                {
                     cont.resumeWithException(it)
                 })
         )
@@ -67,22 +68,23 @@ class NetworkServiceAdapter constructor(context: Context) {
     suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
         requestQueue.add(
             getRequest("collectors",
-                Response.Listener<String> { response ->
+                { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Collector>()
                     for (i in 0 until resp.length()) {
                         val item = resp.getJSONObject(i)
-                        val collector = Collector(
-                            collectorId = item.getInt("id"),
-                            name = item.getString("name"),
-                            telephone = item.getString("telephone"),
-                            email = item.getString("email")
+                        list.add(
+                            i, Collector(
+                                collectorId = item.getInt("id"),
+                                name = item.getString("name"),
+                                telephone = item.getString("telephone"),
+                                email = item.getString("email")
+                            )
                         )
-                        list.add(i, collector)
                     }
                     cont.resume(list)
                 },
-                Response.ErrorListener {
+                {
                     cont.resumeWithException(it)
                 })
         )
@@ -92,7 +94,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
         requestQueue.add(
             getRequest("albums",
-                Response.Listener<String> { response ->
+                { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Album>()
                     for (i in 0 until resp.length()) {
@@ -111,7 +113,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     }
                     cont.resume(list)
                 },
-                Response.ErrorListener {
+                {
                     cont.resumeWithException(it)
                 })
         )
@@ -133,30 +135,28 @@ class NetworkServiceAdapter constructor(context: Context) {
 
         requestQueue.add(
             postRequest("albums", body,
-                Response.Listener<JSONObject> { response ->
-                    val newAlbum = Album(
-                        albumId = response.getInt("id"),
-                        name = response.getString("name"),
-                        cover = response.getString("cover"),
-                        releaseDate = response.getString("releaseDate"),
-                        description = response.getString("description"),
-                        genre = response.getString("genre"),
-                        recordLabel = response.getString("recordLabel")
+                { response ->
+                    onComplete(
+                        Album(
+                            albumId = response.getInt("id"),
+                            name = response.getString("name"),
+                            cover = response.getString("cover"),
+                            releaseDate = response.getString("releaseDate"),
+                            description = response.getString("description"),
+                            genre = response.getString("genre"),
+                            recordLabel = response.getString("recordLabel")
+                        )
                     )
-                    onComplete(newAlbum)
                 },
-                Response.ErrorListener {
+                {
                     onError(it)
                 }
             )
         )
     }
 
-    /*fun createPrize(
-        newPrize: () -> Unit,
-        onComplete: (resp: Prize) -> Unit,
-        onError: (error: VolleyError) -> Unit
-    ) {
+
+    suspend fun createPrize(newPrize: Prize): Prize = suspendCoroutine { continuation ->
         val body: JSONObject = JSONObject()
         body.put("name", newPrize.name)
         body.put("description", newPrize.description)
@@ -165,21 +165,22 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(
             postRequest("prizes", body,
                 { response ->
-                    val newPrize = Prize(
-                        prizeId = response.getInt("id"),
-                        name = response.getString("name"),
-                        description = response.getString("description"),
-                        organization = response.getString("organization")
+
+                    continuation.resume(
+                        Prize(
+                            prizeId = response.getInt("id"),
+                            name = response.getString("name"),
+                            description = response.getString("description"),
+                            organization = response.getString("organization")
+                        )
                     )
-                    onComplete(newPrize)
                 },
-                {
-                    onError(it)
+                { error ->
+                    continuation.resumeWithException(error)
                 }
             )
         )
-    }*/
-
+    }
 
     private fun getRequest(
         path: String,
@@ -218,4 +219,8 @@ class NetworkServiceAdapter constructor(context: Context) {
             errorListener
         )
     }
+
+
 }
+
+

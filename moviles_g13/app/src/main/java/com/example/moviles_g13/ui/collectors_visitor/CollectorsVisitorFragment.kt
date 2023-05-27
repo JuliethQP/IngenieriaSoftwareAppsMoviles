@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.ImageButton
 import android.widget.Toast
@@ -64,6 +65,10 @@ class CollectorsVisitorFragment : Fragment() {
 
         view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
             findNavController().navigate(R.id.action_back_to_home_visitor)
+        }
+
+        view.findViewById<Button>(R.id.awards_button).setOnClickListener {
+            findNavController().navigate(R.id.action_HomeCollectorFragment_to_createPrizeToArtistFragment)
         }
 
     }

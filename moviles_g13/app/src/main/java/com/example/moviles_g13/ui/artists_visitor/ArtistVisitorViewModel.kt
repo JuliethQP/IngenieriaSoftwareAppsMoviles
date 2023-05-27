@@ -2,7 +2,6 @@ package com.example.moviles_g13.ui.artists_visitor
 
 import android.app.Application
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.moviles_g13.model.Artist
-import com.example.moviles_g13.network.NetworkServiceAdapter
 import com.example.moviles_g13.repositories.ArtistRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,9 +33,6 @@ class ArtistVisitorViewModel(application: Application) : AndroidViewModel(applic
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    init {
-        refreshDataFromNetwork()
-    }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun refreshDataFromNetwork() {
@@ -55,6 +50,7 @@ class ArtistVisitorViewModel(application: Application) : AndroidViewModel(applic
             _eventNetworkError.value = true
         }
     }
+
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
