@@ -9,5 +9,6 @@ data class Artist(
     val description:String,
     val birthDate:String,
     val albums: JSONArray,
-    val performerPrizes: JSONArray
+    val performerPrizes: JSONArray,
+
 )

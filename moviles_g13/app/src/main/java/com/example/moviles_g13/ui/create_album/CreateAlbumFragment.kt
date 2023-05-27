@@ -13,34 +13,52 @@ import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.R
-import com.example.moviles_g13.databinding.CreatePrizeToArtistFragmentBinding
 import com.example.moviles_g13.model.Album
-import com.example.moviles_g13.ui.adapters.PrizesAdapter
 import com.google.android.material.textfield.TextInputEditText
 
 
 class CreateAlbumFragment : Fragment() {
 
     private lateinit var viewModel: CreateAlbumViewModel
-    private var _binding: CreatePrizeToArtistFragmentBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var recyclerView: RecyclerView
-
-    private var viewModelAdapter: PrizesAdapter? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(this).get(CreateAlbumViewModel::class.java)
 
-        _binding = CreatePrizeToArtistFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        viewModelAdapter = PrizesAdapter()
-        return view
+        var root = inflater.inflate(R.layout.create_album_layout, container, false)
 
+        val spinnerRecord: Spinner = root.findViewById(R.id.form_spinner_text_record)
+
+        context?.let {
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.records_array,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerRecord.adapter = adapter
+            }
+        }
+
+        val spinnerGender: Spinner = root.findViewById(R.id.form_spinner_text_gender)
+
+        context?.let {
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.genders_array,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerGender.adapter = adapter
+            }
+        }
+
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

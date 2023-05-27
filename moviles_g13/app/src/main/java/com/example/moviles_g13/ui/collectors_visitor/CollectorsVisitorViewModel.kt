@@ -35,7 +35,9 @@ class CollectorsVisitorViewModel(application: Application) : AndroidViewModel(ap
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-
+    init {
+        refreshDataFromNetwork()
+    }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun refreshDataFromNetwork() {

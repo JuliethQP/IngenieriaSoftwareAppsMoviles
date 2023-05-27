@@ -48,6 +48,9 @@
     <string name="simbolo_corazon">simbolo de corazon</string>
     <string name="simbolo_de_corazon">simbolo de corazon</string>
     <string name="boton_para_devolverse">boton para devolverse</string>
+    <string name="artists">Artists</string>
+    <string name="go_back_to_previous_screen">Go back to previous screen</string>
+    <string name="menu">menu</string>
 
 
 </resources>
