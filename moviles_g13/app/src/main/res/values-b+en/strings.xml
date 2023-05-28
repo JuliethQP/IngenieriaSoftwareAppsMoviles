@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">moviles_g13</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="company_name">Vinilos</string>
+
+    <string name="text_visitor">Visitor</string>
+    <string name="text_collector">Collector</string>
+
+    <!-- texts for buttons of collector home -->
+    <string name="text_my_albums">My Albums</string>
+
+    <!-- texts for buttons of visitor home -->
+    <string name="text_vis_albums">Albums</string>
+    <string name="text_vis_artists">Artists</string>
+    <string name="text_vis_collectors">Collectors</string>
+
+    <string name="home_fragment_label">Home</string>
+    <string name="visitor_fragment_label">Visitor</string>
+    <string name="collector_fragment_label">Collector</string>
+    <string name="title_home">Home</string>
+
+    <string name="menu_album">Albums</string>
+    <string name="menu_artists">Artists</string>
+    <string name="menu_collections">Collecionistas</string>
+    <string name="album_fragment_label">Albums</string>
+    <string name="back_button_description">Go back to previous screen</string>
+    <string name="create_album">Create Album</string>
+    <string name="form_create_description">This form is for type the information related to album</string>
+    <string name="str_form_1">Name</string>
+    <string name="str_form_2">Released Date</string>
+    <string name="str_form_3">Gender</string>
+    <string name="str_form_4">Record</string>
+    <string name="str_form_5">URL Cover</string>
+    <string name="str_form_6">Description</string>
+
+    <string name="create_prize">Create prize</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="simbolo_corazon">hearth icon</string>
+    <string name="simbolo_de_corazon">hearth icon</string>
+    <string name="simbolo_de_agregar">add icon</string>
+    <string name="boton_para_devolverse">back button</string>
+    <string name="artists">Artists</string>
+    <string name="go_back_to_previous_screen">Go back to previous screen</string>
+    <string name="menu">menu</string>
+    <string name="name_form">Name</string>
+    <string name="description_form">Description</string>
+    <string name="organization">Organization</string>
+    <string name="albums">Albums</string>
+
+
+    <string name="aritst_item">Item of artists list</string>
+    <string name="artist_item_img">artist image</string>
+    <string name="artist_item_name">artist name</string>
+    <string name="artist_item_description">artist description</string>
+
+    <string name="album_item">Album item of list</string>
+    <string name="album_item_logo">album image</string>
+    <string name="album_item_name">album name</string>
+    <string name="album_item_gender">album gender</string>
+    <string name="album_item_disc">record studio</string>
+    <string name="album_item_content">album information</string>
+
+</resources>

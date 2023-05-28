@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#e0e0e0"
-                android:hint="nombre"
+                android:hint="@string/name_form"
                 android:textColor="#000"
                 app:cornerRadius="32dp" />
 
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#e0e0e0"
-                android:hint="Descipción"
+                android:hint="@string/description_form"
                 android:textColor="#000"
                 app:cornerRadius="32dp" />
 
@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#e0e0e0"
-                android:hint="Organizacion"
+                android:hint="@string/organization"
                 android:textColor="#000"
                 app:cornerRadius="32dp"
                 tools:ignore="MissingConstraints"

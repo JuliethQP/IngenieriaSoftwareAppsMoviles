@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_home_black_24dp" android:id="@id/HomeVisitorFragment" android:title="@string/title_home" />
+    <item android:icon="@drawable/albums" android:id="@id/AlbumsVisitorFragment" android:title="@string/text_vis_albums" />
+    <item android:icon="@drawable/artists" android:id="@id/ArtistsVisitorFragment" android:title="@string/text_vis_artists" />
+    <item android:icon="@drawable/collectors" android:id="@id/CollectorsVisitorFragment" android:title="@string/text_vis_collectors" />
+</menu>
