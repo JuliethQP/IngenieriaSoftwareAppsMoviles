@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="32dp"
-    tools:context=".ui.home_visitor.HomeVisitorFragment">
+    android:background="#F5F5F5"
+    tools:context=".ui.home_visitor.HomeVisitorFragment"
+    >
 
     <ImageButton
         android:id="@+id/back_button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -18,7 +20,8 @@
         android:background="#fff"
         android:src="@drawable/previous_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription = "@string/boton_para_devolverse"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -47,7 +50,8 @@
             android:layout_height="72dp"
             android:gravity="center"
             android:textAlignment="gravity"
-            android:src="@drawable/vinil_style_2" />
+            android:src="@drawable/vinil_style_2"
+            android:contentDescription ="logo de una empresa"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -64,8 +68,8 @@
 
         <Button
             android:id="@+id/albums_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
             android:layout_marginTop="4dp"
@@ -80,8 +84,8 @@
 
         <Button
             android:id="@+id/artists_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/albums_button"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
@@ -94,8 +98,8 @@
 
         <Button
             android:id="@+id/collectors_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/artists_button"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"

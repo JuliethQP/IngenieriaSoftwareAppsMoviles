@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_back_to_home_visitor"
             app:destination="@id/HomeVisitorFragment" />
+        <action
+            android:id="@+id/action_AlbumsVisitorFragment_to_albumsDetailFragment"
+            app:destination="@id/albumsDetailFragment" />
     </fragment>
 
     <fragment
@@ -63,6 +66,7 @@
         <action
             android:id="@+id/action_artistsVisitorFragment_to_HomeVisitorFragment"
             app:destination="@id/HomeVisitorFragment" />
+
     </fragment>
 
     <!-- Navigation to Collectors for visitors -->
@@ -75,6 +79,9 @@
         <action
             android:id="@+id/action_back_to_home_visitor"
             app:destination="@id/HomeVisitorFragment" />
+        <action
+            android:id="@+id/action_CollectorsVisitorFragment_to_collectorsDetailFragment"
+            app:destination="@id/collectorsDetailFragment" />
     </fragment>
 
     <!-- Navigation for collector -->
@@ -91,6 +98,9 @@
         <action
             android:id="@+id/action_collector_to_create_album_layout"
             app:destination="@id/createAlbumFragment" />
+        <action
+            android:id="@+id/action_HomeCollectorFragment_to_createPrizeToArtistFragment"
+            app:destination="@id/createPrizeToArtistFragment" />
     </fragment>
 
 
@@ -104,6 +114,41 @@
             android:id="@+id/action_create_album_to_HomeCollectorFragment"
             app:destination="@id/HomeCollectorFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/albumsDetailFragment"
+        android:name="com.example.moviles_g13.ui.albums_detail.AlbumsDetailFragment"
+        android:label="albums_detail_fragment"
+        tools:layout="@layout/albums_detail_fragment" >
+        <argument
+            android:name="album_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_albumsDetailFragment_to_AlbumsVisitorFragment"
+            app:destination="@id/AlbumsVisitorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createPrizeToArtistFragment"
+        android:name="com.example.moviles_g13.CreatePrizeToArtistFragment1"
+        android:label="create_prize_to_artist_fragment"
+        tools:layout="@layout/create_prize_to_artist_fragment" >
+        <action
+            android:id="@+id/action_createPrizeToArtistFragment_to_HomeCollectorFragment"
+            app:destination="@id/HomeCollectorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/collectorsDetailFragment"
+        android:name="com.example.moviles_g13.ui.collectors_detail.CollectorsDetailFragment"
+        android:label="collectors_detail_fragment"
+        tools:layout="@layout/collectors_detail_fragment" >
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_collectorsDetailFragment_to_CollectorsVisitorFragment"
+            app:destination="@id/CollectorsVisitorFragment" />
     </fragment>
 
 </navigation>

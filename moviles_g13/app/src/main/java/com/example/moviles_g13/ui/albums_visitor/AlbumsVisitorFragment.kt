@@ -1,17 +1,19 @@
 package com.example.moviles_g13.ui.albums_visitor
 
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.R
-import com.example.moviles_g13.databinding.AlbumsItemLayoutBinding
 import com.example.moviles_g13.databinding.AlbumsVisitorFragmentBinding
 import com.example.moviles_g13.model.Album
 import com.example.moviles_g13.ui.adapters.AlbumsAdapter
@@ -39,6 +41,7 @@ class AlbumsVisitorFragment : Fragment() {
         return view
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,7 +66,6 @@ class AlbumsVisitorFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
             findNavController().navigate(R.id.action_back_to_home_visitor)
         }
-
     }
 
     override fun onDestroyView() {
@@ -71,6 +73,7 @@ class AlbumsVisitorFragment : Fragment() {
         _binding = null
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun onNetworkError() {
         if(!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()

@@ -33,6 +33,9 @@ class HomeCollectorFragment : Fragment() {
         view.findViewById<Button>(R.id.album_button).setOnClickListener {
             findNavController().navigate(R.id.action_collector_to_create_album_layout)
         }
+        view.findViewById<Button>(R.id.awards_button).setOnClickListener {
+            findNavController().navigate(R.id.action_HomeCollectorFragment_to_createPrizeToArtistFragment)
+        }
 
     }
 

@@ -44,7 +44,7 @@
             android:src="@drawable/previous_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="Go back to previous screen"
+            android:contentDescription="@string/go_back_to_previous_screen"
             android:padding="8dp"/>
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="24dp"
-            android:text="Coleccionistas"
+            android:text="@string/collectors_title"
             android:textColor="#000"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +72,7 @@
         android:background="#e0e0e0"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout_editor_absoluteX="0dp" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_collector"
