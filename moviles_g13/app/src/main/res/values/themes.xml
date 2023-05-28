@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Moviles_g13" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#00D052</item>
+        <item name="colorPrimary">#004E1F</item>
         <item name="colorPrimaryVariant">#00762E</item>
         <item name="colorOnPrimary">#F5F5F5</item>
         <!-- Secondary brand color. -->
