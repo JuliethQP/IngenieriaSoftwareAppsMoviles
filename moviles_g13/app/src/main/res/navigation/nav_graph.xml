@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_back_to_home_visitor"
             app:destination="@id/HomeVisitorFragment" />
+        <action
+            android:id="@+id/action_CollectorsVisitorFragment_to_collectorsDetailFragment"
+            app:destination="@id/collectorsDetailFragment" />
     </fragment>
 
     <!-- Navigation for collector -->
@@ -133,6 +136,19 @@
         <action
             android:id="@+id/action_createPrizeToArtistFragment_to_HomeCollectorFragment"
             app:destination="@id/HomeCollectorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/collectorsDetailFragment"
+        android:name="com.example.moviles_g13.ui.collectors_detail.CollectorsDetailFragment"
+        android:label="collectors_detail_fragment"
+        tools:layout="@layout/collectors_detail_fragment" >
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_collectorsDetailFragment_to_CollectorsVisitorFragment"
+            app:destination="@id/CollectorsVisitorFragment" />
     </fragment>
 
 </navigation>

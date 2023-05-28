@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false">
+
+    <data>
+        <variable
+            name="collector"
+            type="com.example.moviles_g13.dto.CollectorDetail" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="375dp"
+        android:layout_height="725dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp">
+        <TextView
+            android:id="@+id/collector_name"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:text="@{collector.name}"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="23sp"/>
+        <ImageView
+            android:id="@+id/collector_logo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/collectors"
+            android:paddingBottom="10dp"/>
+        <TextView
+            android:id="@+id/collector_phone"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text='@{@string/collector_phone + " " + collector.telephone}'/>
+        <TextView
+            android:id="@+id/collector_email"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text='@{@string/collector_email + " " + collector.email}'/>
+        <TextView
+            android:id="@+id/collector_favorite_performers"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="@{collector.favoritePerforms}"/>
+        <TextView
+            android:id="@+id/collector_albums"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/collector_albums"/>
+    </LinearLayout>
+
+</layout>
