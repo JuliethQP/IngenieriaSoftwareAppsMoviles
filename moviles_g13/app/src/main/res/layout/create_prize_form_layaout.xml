@@ -20,6 +20,18 @@
         android:paddingRight="20dp"
         android:paddingBottom="8dp">
 
+        <TextView
+            android:id="@+id/form_description_text"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/form_create_prize_description"
+            android:textColor="#000"
+            android:textSize="24dp"
+            app:autoSizeTextType="uniform"
+            tools:ignore="MissingConstraints" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/form_input_text_name"

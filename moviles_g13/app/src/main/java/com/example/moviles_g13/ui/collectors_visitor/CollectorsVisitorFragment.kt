@@ -67,10 +67,6 @@ class CollectorsVisitorFragment : Fragment() {
             findNavController().navigate(R.id.action_back_to_home_visitor)
         }
 
-        view.findViewById<Button>(R.id.awards_button).setOnClickListener {
-            findNavController().navigate(R.id.action_HomeCollectorFragment_to_createPrizeToArtistFragment)
-        }
-
     }
 
     override fun onDestroyView() {

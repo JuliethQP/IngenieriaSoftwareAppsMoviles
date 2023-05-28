@@ -5,21 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="32dp"
-    tools:context=".ui.collectors_visitor.CollectorsVisitorFragment">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:contentDescription="menu"
-        app:backgroundTint="#00D052"
-        android:src="@drawable/ic_dashboard_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="showPopup"
-        />
+    tools:context=".ui.collectors_detail.CollectorsDetailFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -57,7 +43,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="24dp"
-            android:text="@string/collectors_title"
+            android:text="@string/collectors_detail_title"
             android:textColor="#000"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +61,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_collector"
+        android:id="@+id/recycler_view_detail_collector"
         android:layout_width="413dp"
         android:layout_height="658dp"
         android:scrollbars="vertical"

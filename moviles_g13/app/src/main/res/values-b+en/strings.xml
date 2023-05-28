@@ -33,6 +33,7 @@
     <string name="back_button_description">Go back to previous screen</string>
     <string name="create_album">Create Album</string>
     <string name="form_create_description">This form is for type the information related to album</string>
+    <string name="form_create_prize_description">This form is for type the information related to prizes</string>
     <string name="str_form_1">Name</string>
     <string name="str_form_2">Released Date</string>
     <string name="str_form_3">Gender</string>
@@ -69,4 +70,11 @@
     <string name="album_item_content">album information</string>
     <string name="album_item_description">album description</string>
 
+    <string name="collector_name">Name:</string>
+    <string name="collector_phone">Phone:</string>
+    <string name="collector_email">E-mail:</string>
+    <string name="collector_albums">Albums for salle:</string>
+    <string name="collector_img">collector image</string>
+    <string name="collectors_title">Collectors</string>
+    <string name="collectors_detail_title">Collector detail</string>
 </resources>
