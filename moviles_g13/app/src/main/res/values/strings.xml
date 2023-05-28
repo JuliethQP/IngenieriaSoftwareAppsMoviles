@@ -67,7 +67,6 @@
     <string name="album_item_gender">Genero del album</string>
     <string name="album_item_disc">estudio discrografico</string>
     <string name="album_item_content">Información del album</string>
+    <string name="album_item_description">Descripción del album</string>
 
-
->>>>>>> develop
 </resources>

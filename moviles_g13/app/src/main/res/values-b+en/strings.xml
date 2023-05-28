@@ -67,5 +67,6 @@
     <string name="album_item_gender">album gender</string>
     <string name="album_item_disc">record studio</string>
     <string name="album_item_content">album information</string>
+    <string name="album_item_description">album description</string>
 
 </resources>

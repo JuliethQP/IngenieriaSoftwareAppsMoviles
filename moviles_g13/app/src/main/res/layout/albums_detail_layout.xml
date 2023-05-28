@@ -23,6 +23,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:text="@{album.name}"
+            android:contentDescription="@{@string/album_item_name + album.name}"
             android:gravity="center_horizontal"
             android:textStyle="bold"
             android:textSize="23sp"/>
@@ -33,6 +34,7 @@
             android:gravity="center"
             android:textAlignment="gravity"
             android:src="@drawable/albums"
+            android:contentDescription="@string/album_item_logo"
             android:paddingBottom="10dp"/>
         <TextView
             android:id="@+id/album_genre"
@@ -40,20 +42,23 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:text='@{@string/genre_label + " " + album.genre}'/>
+            android:text='@{@string/album_item_gender + ": " + album.genre}'
+            android:contentDescription='@{@string/album_item_gender + album.genre}'/>
         <TextView
             android:id="@+id/album_record_label"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:text='@{@string/record_label + " " + album.recordLabel}'/>
+            android:text='@{@string/album_item_disc + " :" + album.recordLabel}'
+            android:contentDescription='@{@string/album_item_disc + album.recordLabel}'/>
         <TextView
             android:id="@+id/album_description"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="@{album.description}"
+            android:contentDescription="@string/album_item_description"
             android:textColor="@color/black"
             android:justificationMode="inter_word"/>
     </LinearLayout>
