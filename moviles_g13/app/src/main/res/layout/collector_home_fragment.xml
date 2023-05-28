@@ -107,14 +107,11 @@
             android:layout_marginRight="107dp"
             android:layout_marginBottom="90dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Crear premios"
+            android:text="@string/create_prize"
             app:cornerRadius="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

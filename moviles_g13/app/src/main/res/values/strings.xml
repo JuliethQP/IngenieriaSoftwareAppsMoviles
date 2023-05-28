@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">moviles_g13</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configuraciones</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
 
     <string name="company_name">Vinilos</string>
 
@@ -21,18 +21,16 @@
     <string name="text_vis_artists">Artistas</string>
     <string name="text_vis_collectors">Coleccionistas</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="home_fragment_label">Home</string>
     <string name="visitor_fragment_label">Visitor</string>
     <string name="collector_fragment_label">Collector</string>
     <string name="title_home">Home</string>
 
-    <string name="menu_album">Albums</string>
-    <string name="menu_artists">Artists</string>
+    <string name="menu_album">Albumes</string>
+    <string name="menu_artists">Artistas</string>
     <string name="menu_collections">Collecionistas</string>
     <string name="album_fragment_label">Albums</string>
-    <string name="back_button_description"></string>
+    <string name="back_button_description">Volver a la pantalla anterior</string>
     <string name="create_album">Crear Album</string>
     <string name="form_create_description">En este formulario podràs diligenciar toda la información asociada a un album</string>
     <string name="str_form_1">Nombre</string>
@@ -48,9 +46,27 @@
     <string name="simbolo_corazon">simbolo de corazon</string>
     <string name="simbolo_de_corazon">simbolo de corazon</string>
     <string name="boton_para_devolverse">boton para devolverse</string>
+    <string name="simbolo_de_agregar">Simbolo para agregar</string>
     <string name="artists">Artists</string>
-    <string name="go_back_to_previous_screen">Go back to previous screen</string>
+    <string name="go_back_to_previous_screen">Regresar a la pantalla anterior</string>
     <string name="menu">menu</string>
+    <string name="name_form">Nombre</string>
+    <string name="description_form">Descripción</string>
+    <string name="organization">Organizacion</string>
+    <string name="albums">Albumes</string>
+
+
+    <string name="aritst_item">Elemento de lista artistas</string>
+    <string name="artist_item_img">logo de artista</string>
+    <string name="artist_item_name">Nombre del artista</string>
+    <string name="artist_item_description">Descripción del artista</string>
+
+    <string name="album_item">item de la lista de albums</string>
+    <string name="album_item_logo">Imagen del album</string>
+    <string name="album_item_name">Nombre del album</string>
+    <string name="album_item_gender">Genero del album</string>
+    <string name="album_item_disc">estudio discrografico</string>
+    <string name="album_item_content">Información del album</string>
 
 
 </resources>
