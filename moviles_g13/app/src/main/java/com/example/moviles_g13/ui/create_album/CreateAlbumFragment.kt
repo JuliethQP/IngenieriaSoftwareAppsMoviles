@@ -1,8 +1,7 @@
 package com.example.moviles_g13.ui.create_album
 
-import android.content.Context
+import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.moviles_g13.R
 import com.example.moviles_g13.model.Album
@@ -79,11 +80,37 @@ class CreateAlbumFragment : Fragment() {
                 albumId = 0
             )
 
-            viewModel.createAlbum(newAlbum);
-
-            findNavController().navigate(R.id.action_create_album_to_HomeCollectorFragment)
+            lifecycleScope.launchWhenStarted {
+                createAlbum(newAlbum)
+            }
         }
 
+    }
+
+    fun createAlbum(album: Album){
+        try {
+            if(isValidAlbum(album)) {
+                viewModel.createAlbum(album);
+                showModal("Proceso Exitoso", "El albúm ha sido creado satisfactoriamente.")
+                findNavController().navigate(R.id.action_create_album_to_HomeCollectorFragment)
+            } else {
+                showModal("Lo sentimos", "Los parametrós ingresados para la creación del albúm no son validos.")
+            }
+        } catch  (e: Exception) {
+            showModal("Lo sentimos", "Ha ocurrido un error inesperado, intente nuevamente más tarde.")
+        }
+    }
+
+    fun isValidAlbum(album: Album): Boolean {
+        return true;
+    }
+
+    private fun showModal(titulo: String, mensaje: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(titulo)
+        builder.setMessage(mensaje)
+        builder.setPositiveButton("Aceptar", null)
+        builder.show()
     }
 
 }

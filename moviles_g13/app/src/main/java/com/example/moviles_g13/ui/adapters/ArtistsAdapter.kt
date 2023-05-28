@@ -15,8 +15,8 @@ import com.example.moviles_g13.model.Artist
 import com.example.moviles_g13.R
 import com.example.moviles_g13.ui.artists_visitor.ArtistsVisitorFragmentDirections
 
-class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
-    var artists :List<Artist> = emptyList()
+class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>() {
+    var artists: List<Artist> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -27,7 +27,8 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
             LayoutInflater.from(parent.context),
             ArtistViewHolder.LAYOUT,
             parent,
-            false)
+            false
+        )
         return ArtistViewHolder(withDataBinding)
     }
 
@@ -37,9 +38,10 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
         }
         holder.bind(artists[position])
         holder.viewDataBinding.root.setOnClickListener {
-            val action = ArtistsVisitorFragmentDirections.actionArtistsVisitorFragmentToHomeVisitorFragment()
+            val action =
+                ArtistsVisitorFragmentDirections.actionArtistsVisitorFragmentToHomeVisitorFragment()
+            holder.viewDataBinding.root.findNavController().navigate(action)
 
-           // holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
@@ -57,7 +59,8 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
                     RequestOptions()
                         .placeholder(R.drawable.loading_animation)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .error(R.drawable.ic_broken_image))
+                        .error(R.drawable.ic_broken_image)
+                )
                 .into(viewDataBinding.artistLogo)
         }
 
