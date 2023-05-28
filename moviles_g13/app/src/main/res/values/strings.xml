@@ -43,4 +43,5 @@
     <string name="str_form_6">Descripción</string>
     <string name="genre_label">Género:</string>
     <string name="record_label">Disquera:</string>
+    <string name="birthdate">Fecha de nacimiento:</string>
 </resources>

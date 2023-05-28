@@ -134,8 +134,8 @@
             android:name="artist_id"
             app:argType="integer" />
         <action
-            android:id="@+id/action_artistsDetailFragment_to_ArtistsVisitorFragment"
-            app:destination="@id/ArtistsVisitorFragment" />
+            android:id="@+id/action_artistsDetailFragment_to_artistsVisitorFragment"
+            app:destination="@id/artistsVisitorFragment" />
     </fragment>
 
 </navigation>

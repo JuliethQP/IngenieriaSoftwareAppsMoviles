@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:text='@{artist.birthDate}'/>
+            android:text='@{@string/birthdate + " " + artist.birthDate}'/>
         <TextView
             android:id="@+id/artist_description"
             android:layout_width="375dp"

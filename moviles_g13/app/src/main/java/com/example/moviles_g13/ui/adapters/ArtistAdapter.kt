@@ -62,6 +62,4 @@ class ArtistAdapter: RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>() {
             val LAYOUT = R.layout.artists_detail_layout
         }
     }
-
-
 }

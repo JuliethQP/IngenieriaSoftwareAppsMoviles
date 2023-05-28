@@ -73,7 +73,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                             artistId = item.getInt("id"),
                             name = item.getString("name"),
                             image = item.getString("image"),
-                            birthDate = item.getString("birthDate"),
+                            birthDate = item.getString("birthDate").substring(0, item.getString("birthDate").indexOf("T")),
                             albums = item.getJSONArray("albums"),
                             performerPrizes = item.getJSONArray("performerPrizes"),
                             description = item.getString("description")

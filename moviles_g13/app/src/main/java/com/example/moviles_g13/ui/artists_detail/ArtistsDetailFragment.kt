@@ -66,7 +66,7 @@ class ArtistsDetailFragment : Fragment() {
         })
 
         view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
-            findNavController().navigate(R.id.action_artistsDetailFragment_to_ArtistsVisitorFragment)
+            findNavController().navigate(R.id.action_artistsDetailFragment_to_artistsVisitorFragment)
         }
 
     }
