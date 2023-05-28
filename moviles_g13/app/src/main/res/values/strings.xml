@@ -69,7 +69,12 @@
     <string name="album_item_content">Información del album</string>
     <string name="album_item_description">Descripción del album</string>
 
+    <string name="collector_name">Nombre:</string>
     <string name="collector_phone">Teléfono:</string>
     <string name="collector_email">E-mail:</string>
     <string name="collector_albums">Álbumes a la venta:</string>
+    <string name="collectors_title">Coleccionsitas</string>
+    <string name="collectors_detail_title">Detalle colecionista</string>
+    <string name="collector_img">Imagen colecionista</string>
+
 </resources>

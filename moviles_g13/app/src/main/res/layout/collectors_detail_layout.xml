@@ -11,10 +11,9 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="375dp"
-        android:layout_height="725dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
         <TextView
             android:id="@+id/collector_name"
             android:layout_width="375dp"
@@ -32,6 +31,7 @@
             android:layout_height="250dp"
             android:scaleType="fitCenter"
             android:src="@drawable/collectors"
+            android:contentDescription="@string/collector_img"
             android:paddingBottom="10dp"/>
         <TextView
             android:id="@+id/collector_phone"

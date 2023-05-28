@@ -43,20 +43,11 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="24dp"
-            android:text="@string/text_collector"
+            android:text="@string/collectors_detail_title"
             android:textColor="#000"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <ImageView
-            android:id="@+id/company_logo"
-            android:layout_width="96dp"
-            android:layout_height="72dp"
-            android:gravity="center"
-            android:textAlignment="gravity"
-            android:src="@drawable/vinil_style_2" />
 
     </LinearLayout>
 
@@ -67,6 +58,7 @@
         android:background="#e0e0e0"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout_editor_absoluteX="0dp" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_detail_collector"

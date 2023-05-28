@@ -69,7 +69,11 @@
     <string name="album_item_content">album information</string>
     <string name="album_item_description">album description</string>
 
+    <string name="collector_name">Name:</string>
     <string name="collector_phone">Phone:</string>
     <string name="collector_email">E-mail:</string>
     <string name="collector_albums">Albums for salle:</string>
+    <string name="collector_img">collector image</string>
+    <string name="collectors_title">Collectors</string>
+    <string name="collectors_detail_title">Collector detail</string>
 </resources>
