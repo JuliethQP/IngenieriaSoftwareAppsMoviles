@@ -26,7 +26,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="#fff"
-            android:contentDescription="Go back to previous screen"
+            android:contentDescription="@string/go_back_to_previous_screen"
             android:padding="8dp"
             android:src="@drawable/previous_24"
             app:layout_constraintStart_toStartOf="parent"
