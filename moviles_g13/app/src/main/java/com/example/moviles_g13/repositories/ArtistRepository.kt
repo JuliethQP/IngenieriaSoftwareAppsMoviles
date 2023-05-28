@@ -26,4 +26,10 @@ class ArtistRepository(val application: Application) {
             return potentialRespx
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    suspend fun refreshData(id: Int): Any {
+        return  NetworkServiceAdapter.getInstance(application.applicationContext).getArtist(id)
+    }
+
 }

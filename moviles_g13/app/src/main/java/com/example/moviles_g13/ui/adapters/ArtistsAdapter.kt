@@ -2,6 +2,7 @@ package com.example.moviles_g13.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.annotation.LayoutRes
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
@@ -32,15 +33,17 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
+        val artist = artists[position]
         holder.viewDataBinding.also {
-            it.artist = artists[position]
+            it.artist = artist
         }
-        holder.bind(artists[position])
-        holder.viewDataBinding.root.setOnClickListener {
-            val action = ArtistsVisitorFragmentDirections.actionArtistsVisitorFragmentToHomeVisitorFragment()
+        holder.bind(artist)
 
-           // holder.viewDataBinding.root.findNavController().navigate(action)
-        }
+        /**holder.artistLayout.setOnClickListener {
+            val action = ArtistsVisitorFragmentDirections
+                .actionArtistsVisitorFragmentToArtistsDetailFragment(artist.artistId)
+        holder.viewDataBinding.root.findNavController().navigate(action)
+        }*/
     }
 
     override fun getItemCount(): Int {
@@ -50,6 +53,8 @@ class ArtistsAdapter  : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
 
     class ArtistViewHolder(val viewDataBinding: ArtistVisitorItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
+
+        val artistLayout = viewDataBinding.root.findViewById<LinearLayout>(R.id.artist_layout)
         fun bind(artist: Artist) {
             Glide.with(itemView)
                 .load(artist.image.toUri().buildUpon().scheme("https").build())

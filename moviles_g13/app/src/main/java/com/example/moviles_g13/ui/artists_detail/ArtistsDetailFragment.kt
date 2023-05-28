@@ -1,4 +1,4 @@
-package com.example.moviles_g13.ui.artists_visitor
+package com.example.moviles_g13.ui.artists_detail
 
 import android.os.Build
 import android.os.Bundle
@@ -12,56 +12,63 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviles_g13.R
-import com.example.moviles_g13.databinding.ArtistsVisitorFragmentBinding
+import com.example.moviles_g13.databinding.ArtistsDetailFragmentBinding
 import com.example.moviles_g13.model.Artist
-import com.example.moviles_g13.ui.adapters.ArtistsAdapter
+import com.example.moviles_g13.ui.adapters.ArtistAdapter
 
+class ArtistsDetailFragment : Fragment() {
 
-class ArtistsVisitorFragment : Fragment() {
-    private var _binding: ArtistsVisitorFragmentBinding ? = null
+    private var _binding: ArtistsDetailFragmentBinding? = null
 
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel:ArtistVisitorViewModel
-    private var viewModelAdapter: ArtistsAdapter? = null
+    private lateinit var viewModel: ArtistsDetailViewModel
+    private var viewModelAdapter: ArtistAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ArtistsVisitorFragmentBinding.inflate(inflater, container, false)
+        _binding = ArtistsDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = ArtistsAdapter()
+        viewModelAdapter = ArtistAdapter()
         return view
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = binding.artistsRv
+
+        recyclerView = binding.recyclerViewDetailArtist
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
 
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
+
         activity.actionBar?.title = getString(R.string.title_home)
-        viewModel = ViewModelProvider(this,ArtistVisitorViewModel.Factory(activity.application)).get(ArtistVisitorViewModel::class.java)
-        viewModel.artists.observe(viewLifecycleOwner, Observer<List<Artist>> {
+        val args: ArtistsDetailFragmentArgs by navArgs()
+        viewModel = ViewModelProvider(this, ArtistsDetailViewModel.Factory(
+            activity.application, args.artistId)).get(
+            ArtistsDetailViewModel::class.java)
+        viewModel.album.observe(viewLifecycleOwner, Observer<Artist> {
             it.apply {
-                viewModelAdapter!!.artists = this
+                viewModelAdapter!!.artist = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
 
-        view.findViewById<ImageButton>(R.id.back_button_artist).setOnClickListener {
-            findNavController().navigate(R.id.action_artistsVisitorFragment_to_HomeVisitorFragment)
+        view.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
+            findNavController().navigate(R.id.action_artistsDetailFragment_to_ArtistsVisitorFragment)
         }
+
     }
 
     override fun onDestroyView() {
@@ -71,7 +78,7 @@ class ArtistsVisitorFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun onNetworkError() {
-        if(!viewModel.isNetworkErrorShown.value!!) {
+        if (!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }

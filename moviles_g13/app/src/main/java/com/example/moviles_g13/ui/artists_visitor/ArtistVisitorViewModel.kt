@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 class ArtistVisitorViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _artist = MutableLiveData<List<Artist>>()

@@ -63,7 +63,31 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
 
     }
-
+    suspend fun getArtist(id: Int): Artist = suspendCoroutine { cont ->
+        requestQueue.add(
+            getRequest("musicians/$id",
+                { response ->
+                    val item = JSONObject(response)
+                    if (item.has("id") && item.has("name")&&item.has("image")) {
+                        val artist = Artist(
+                            artistId = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            birthDate = item.getString("birthDate"),
+                            albums = item.getJSONArray("albums"),
+                            performerPrizes = item.getJSONArray("performerPrizes"),
+                            description = item.getString("description")
+                        )
+                        cont.resume(artist)
+                    } else {
+                        cont.resumeWithException(Exception("Invalid artist data"))
+                    }
+                },
+                {
+                    cont.resumeWithException(it)
+                })
+        )
+    }
     suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
         requestQueue.add(
             getRequest("collectors",

@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_artistsVisitorFragment_to_HomeVisitorFragment"
             app:destination="@id/HomeVisitorFragment" />
+        <action
+            android:id="@+id/action_ArtistsVisitorFragment_to_artistsDetailFragment"
+            app:destination="@id/artistsDetailFragment" />
     </fragment>
 
     <!-- Navigation to Collectors for visitors -->
@@ -108,6 +111,7 @@
             app:destination="@id/HomeCollectorFragment" />
 
     </fragment>
+
     <fragment
         android:id="@+id/albumsDetailFragment"
         android:name="com.example.moviles_g13.ui.albums_detail.AlbumsDetailFragment"
@@ -119,6 +123,19 @@
         <action
             android:id="@+id/action_albumsDetailFragment_to_AlbumsVisitorFragment"
             app:destination="@id/AlbumsVisitorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artistsDetailFragment"
+        android:name="com.example.moviles_g13.ui.artists_detail.ArtistsDetailFragment"
+        android:label="artists_detail_fragment"
+        tools:layout="@layout/artists_detail_fragment" >
+        <argument
+            android:name="artist_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_artistsDetailFragment_to_ArtistsVisitorFragment"
+            app:destination="@id/ArtistsVisitorFragment" />
     </fragment>
 
 </navigation>
