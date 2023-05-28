@@ -102,7 +102,10 @@ class CreateAlbumFragment : Fragment() {
     }
 
     fun isValidAlbum(album: Album): Boolean {
-        return true;
+        return album.name.isNotEmpty() && album.name.length >= 3
+                && album.cover.isNotEmpty() && album.cover.length >= 5
+                && album.releaseDate.isNotEmpty() && album.releaseDate.length>=4
+                && album.description.isNotEmpty() && album.description.length >=5;
     }
 
     private fun showModal(titulo: String, mensaje: String) {
