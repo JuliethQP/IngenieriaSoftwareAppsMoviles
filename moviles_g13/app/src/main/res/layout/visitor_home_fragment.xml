@@ -11,8 +11,8 @@
 
     <ImageButton
         android:id="@+id/back_button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -68,8 +68,8 @@
 
         <Button
             android:id="@+id/albums_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
             android:layout_marginTop="4dp"
@@ -84,8 +84,8 @@
 
         <Button
             android:id="@+id/artists_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/albums_button"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
@@ -98,8 +98,8 @@
 
         <Button
             android:id="@+id/collectors_button"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/artists_button"
             android:layout_marginStart="77dp"
             android:layout_marginLeft="77dp"
