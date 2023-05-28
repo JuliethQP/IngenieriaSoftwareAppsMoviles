@@ -35,7 +35,7 @@
     <string name="form_create_description">En este formulario podràs diligenciar toda la información asociada a un album</string>
     <string name="str_form_1">Nombre</string>
     <string name="str_form_2">Fecha de lanzamiento</string>
-    <string name="str_form_3">Genero</string>
+    <string name="str_form_3">Género</string>
     <string name="str_form_4">Record</string>
     <string name="str_form_5">URL Cover</string>
     <string name="str_form_6">Descripción</string>
@@ -67,6 +67,6 @@
     <string name="album_item_gender">Genero del album</string>
     <string name="album_item_disc">estudio discrografico</string>
     <string name="album_item_content">Información del album</string>
-
+    <string name="album_item_description">Descripción del album</string>
 
 </resources>

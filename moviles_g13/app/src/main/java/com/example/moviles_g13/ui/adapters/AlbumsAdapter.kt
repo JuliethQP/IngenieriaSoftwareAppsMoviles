@@ -2,7 +2,7 @@ package com.example.moviles_g13.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.annotation.LayoutRes
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
@@ -14,9 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.moviles_g13.R
 import com.example.moviles_g13.databinding.AlbumsItemLayoutBinding
 import com.example.moviles_g13.model.Album
-import com.example.moviles_g13.model.Artist
-import com.example.moviles_g13.ui.albums_visitor.AlbumsVisitorViewModel
-import com.example.moviles_g13.ui.artists_visitor.ArtistsVisitorFragmentDirections
+import com.example.moviles_g13.ui.albums_visitor.AlbumsVisitorFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>(){
     var albums :List<Album> = emptyList()
@@ -35,10 +33,17 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
+        val album = albums[position]
         holder.viewDataBinding.also {
-            it.album = albums[position]
+            it.album = album
         }
-        holder.bind(albums[position])
+        holder.bind(album)
+
+        holder.albumLayout.setOnClickListener {
+            val action = AlbumsVisitorFragmentDirections
+                .actionAlbumsVisitorFragmentToAlbumsDetailFragment(album.albumId)
+            holder.viewDataBinding.root.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -47,6 +52,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>(){
 
     class AlbumsViewHolder(val viewDataBinding: AlbumsItemLayoutBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
+
+        val albumLayout = viewDataBinding.root.findViewById<LinearLayout>(R.id.album_layout)
 
         fun bind(album: Album) {
             Glide.with(itemView)

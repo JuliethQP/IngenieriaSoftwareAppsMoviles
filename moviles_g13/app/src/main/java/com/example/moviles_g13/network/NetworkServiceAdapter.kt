@@ -119,6 +119,32 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    suspend fun getAlbum(id: Int): Album = suspendCoroutine { cont ->
+        requestQueue.add(
+            getRequest("albums/$id",
+                { response ->
+                    val item = JSONObject(response)
+                    if (item.has("id") && item.has("name")&&item.has("cover")) {
+                        val album = Album(
+                            albumId = item.getInt("id"),
+                            name = item.getString("name"),
+                            cover = item.getString("cover"),
+                            releaseDate = item.getString("releaseDate"),
+                            description = item.getString("description"),
+                            genre = item.getString("genre"),
+                            recordLabel = item.getString("recordLabel")
+                        )
+                        cont.resume(album)
+                    } else {
+                        cont.resumeWithException(Exception("Invalid album data"))
+                    }
+                },
+                {
+                    cont.resumeWithException(it)
+                })
+        )
+    }
+
     fun createAlbum(
         newAlbum: Album,
         onComplete: (resp: Album) -> Unit,

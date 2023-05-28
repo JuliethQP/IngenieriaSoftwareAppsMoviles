@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_back_to_home_visitor"
             app:destination="@id/HomeVisitorFragment" />
+        <action
+            android:id="@+id/action_AlbumsVisitorFragment_to_albumsDetailFragment"
+            app:destination="@id/albumsDetailFragment" />
     </fragment>
 
     <fragment
@@ -109,6 +112,19 @@
             app:destination="@id/HomeCollectorFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/albumsDetailFragment"
+        android:name="com.example.moviles_g13.ui.albums_detail.AlbumsDetailFragment"
+        android:label="albums_detail_fragment"
+        tools:layout="@layout/albums_detail_fragment" >
+        <argument
+            android:name="album_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_albumsDetailFragment_to_AlbumsVisitorFragment"
+            app:destination="@id/AlbumsVisitorFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/createPrizeToArtistFragment"
         android:name="com.example.moviles_g13.CreatePrizeToArtistFragment1"

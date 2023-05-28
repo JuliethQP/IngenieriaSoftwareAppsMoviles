@@ -25,6 +25,11 @@ class AlbumRepository  (val application: Application){
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    suspend fun refreshData(id: Int): Any {
+        return  NetworkServiceAdapter.getInstance(application.applicationContext).getAlbum(id)
+    }
+
     fun createAlbum(newAlbum: Album, callback: (Album)->Unit, onError: (VolleyError)->Unit) {
         NetworkServiceAdapter.getInstance(application).createAlbum(newAlbum, {
             callback(it)
